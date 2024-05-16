@@ -1,5 +1,7 @@
 package com.forest.forest_server;
 
+import com.forest.forest_server.Category.CategorySecvice;
+import com.forest.forest_server.Diary.DiaryService;
 import com.forest.forest_server.Picture.Picture;
 import com.forest.forest_server.Picture.PictureService;
 import com.forest.forest_server.Record.Record;
@@ -14,7 +16,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -25,13 +26,19 @@ public class ApiController {
     private final UserService userService;
     private final WordService wordService;
     private final RecordService recordService;
+    private final CategorySecvice categorySecvice;
+    private final DiaryService diaryService;
 
     @Autowired
-    public ApiController(PictureService pictureService, UserService userService, WordService wordService, RecordService recordService){
+    public ApiController(PictureService pictureService, UserService userService,
+                         WordService wordService, RecordService recordService,
+                         CategorySecvice categorySecvice, DiaryService diaryService){
         this.pictureService = pictureService;
         this.userService = userService;
         this.wordService = wordService;
         this.recordService = recordService;
+        this.categorySecvice = categorySecvice;
+        this.diaryService = diaryService;
     }
 
     @GetMapping("/hello")
@@ -51,7 +58,8 @@ public class ApiController {
         Word answer = wordService.getById(image.getTag());
         List<Word> options = new ArrayList<>();
         List<Long> optionIds = RandomSelecter.selectWord(answer, 3);
-
+        for(long id : optionIds)
+            options.add(wordService.getById(id));
         QuizForm1 response = new QuizForm1(image, answer, options);
         return ResponseEntity.ok(response);
     }

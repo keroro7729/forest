@@ -12,6 +12,7 @@ public class QuizForm1 {
     // 그림보고 단어 맞추기
     private String imgData;
     private List<String> words;
+    private int answerIdx;
     public QuizForm1(Picture image, Word answer, List<Word> options){
         imgData = ImageLoader.load(image.getSource());
         words = new ArrayList<>();
@@ -19,5 +20,6 @@ public class QuizForm1 {
         for(Word w : options)
             words.add(w.getWord());
         Collections.shuffle(words);
+        answerIdx = words.indexOf(answer);
     }
 }
