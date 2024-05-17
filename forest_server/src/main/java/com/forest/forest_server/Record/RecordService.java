@@ -18,4 +18,8 @@ public class RecordService {
     public List<Record> getAllBy(Long userId){
         return recordRepository.findByUserIdOrderByTimeStampAsc(userId);
     }
+
+    public void addRecord(Record record){
+        recordRepository.save(record);
+    }
 }

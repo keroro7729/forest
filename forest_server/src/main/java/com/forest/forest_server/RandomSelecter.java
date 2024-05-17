@@ -34,12 +34,27 @@ public class RandomSelecter {
         return selectList.get(0);
     }
 
-    public static List<Long> selectWord(Word answer, int count){
-        List<Long> selectList = new ArrayList<>(WORD_LIST);
-        selectList.remove(answer);
+    public static List<Long> selectImgs(Long exceptNum, int count){
+        List<Long> selectList = new ArrayList<>(IMG_LIST);
+        selectList.remove(exceptNum);
         Collections.shuffle(selectList);
         List<Long> result = new ArrayList<>();
         for(int i=0; i<count; i++) result.add(selectList.get(i));
         return result;
+    }
+
+    public static List<Long> selectWords(Long exceptNum, int count){
+        // WORD_LIST가 null 일 수 있음
+        // WORD_LIST 어떻게 초기화할지 생각해봐야함
+        List<Long> selectList = new ArrayList<>(WORD_LIST);
+        selectList.remove(exceptNum);
+        Collections.shuffle(selectList);
+        List<Long> result = new ArrayList<>();
+        for(int i=0; i<count; i++) result.add(selectList.get(i));
+        return result;
+    }
+
+    public static int getRandNum(int n){
+        return (int)(Math.random()*n);
     }
 }

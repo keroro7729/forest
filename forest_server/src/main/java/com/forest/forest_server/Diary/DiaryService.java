@@ -18,6 +18,10 @@ public class DiaryService {
         diaryRepository.save(diary);
     }
 
+    public void addDiary(Diary diary){
+        diaryRepository.save(diary);
+    }
+
     public Diary getById(Long id){
         return diaryRepository.findById(id).orElse(null);
     }
