@@ -4,7 +4,7 @@
             "outputFile": "com.example.forest.app-mergeDebugResources-30:/values-xlarge-v4/values-xlarge-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\kanda\\.gradle\\caches\\transforms-3\\45b3b0cb8a82c4f04a29437990cd35c9\\transformed\\appcompat-1.6.1\\res\\values-xlarge-v4\\values-xlarge-v4.xml",
+                    "source": "C:\\Users\\keror\\.gradle\\caches\\transforms-3\\45b3b0cb8a82c4f04a29437990cd35c9\\transformed\\appcompat-1.6.1\\res\\values-xlarge-v4\\values-xlarge-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7",
                         "startColumns": "4,4,4,4,4,4",

@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiManager {
 
-    private static final String BASE_URL = "http://server-ip:port/";
+    private static final String BASE_URL = "http://192.168.50.59:8080/";
     private Retrofit retrofit;
     private ApiService apiService;
     public ApiManager(){
