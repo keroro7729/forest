@@ -1,1 +1,2 @@
 김진욱 바보
+git merge testing line
