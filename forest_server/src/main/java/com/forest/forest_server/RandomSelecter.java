@@ -1,7 +1,6 @@
 package com.forest.forest_server;
 
 import com.forest.forest_server.Record.Record;
-import com.forest.forest_server.Word.Word;
 
 import java.util.ArrayList;
 import java.util.Collections;
