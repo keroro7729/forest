@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,10 +17,25 @@ import com.example.forest_app.form.ResponseForm;
 import com.example.forest_app.utils.ImageLoader;
 
 import java.util.Locale;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
+
+import com.example.forest_app.api.ApiManager;
+import com.example.forest_app.form.ResponseForm;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity implements TextToSpeech.OnInitListener {
 
@@ -28,11 +44,13 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
         Button helloTestButton = findViewById(R.id.hello_test_button);
+
         helloTestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,6 +109,27 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             public void onClick(View view) {
                 speakText("김지훈 바보");
                 Log.d("김지훈 바보", "김지훈 바보");
+            }
+        });
+
+
+        BottomNavigationView navView = findViewById(R.id.bottom_navigation);
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.nav_host_fragment);
+        NavController navController = navHostFragment.getNavController();
+
+        View fragmentContainer = findViewById(R.id.nav_host_fragment);
+
+        // BottomNavigationView와 NavController 연결
+        NavigationUI.setupWithNavController(navView, navController);
+
+        navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                // ImageView를 숨기고 FragmentContainerView를 보여줌
+                imageView.setVisibility(View.GONE);
+                fragmentContainer.setVisibility(View.VISIBLE);
+                return NavigationUI.onNavDestinationSelected(item, navController);
             }
         });
     }
