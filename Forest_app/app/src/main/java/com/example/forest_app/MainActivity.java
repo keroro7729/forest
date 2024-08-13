@@ -85,8 +85,15 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             @Override
             public void onResponse(Call<ResponseForm> call, Response<ResponseForm> response) {
                 if(response.isSuccessful()) {
-                    Bitmap bm = ImageLoader.convertToBitMap(response.body().getData());
-                    imageView.setImageBitmap(bm);
+                    String data = response.body().getData();
+                    Log.d("image test button", "data: "+data);
+                    if(data != null) {
+                        Bitmap bm = ImageLoader.convertToBitMap(response.body().getData());
+                        imageView.setImageBitmap(bm);
+                    }
+                    else{
+                        Log.e("image test button", "data is null!!");
+                    }
                 }
                 else{
                     Log.e("GetImage", "Request Info: "+call.request().toString());

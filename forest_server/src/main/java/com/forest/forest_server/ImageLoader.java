@@ -7,7 +7,7 @@ import java.util.Base64;
 
 public class ImageLoader {
 
-    private final static String BASE_PATH = "forest_server/src/main/resources/img/";
+    private final static String BASE_PATH = "C:\\Users\\keror\\forest\\forest_server\\src\\main\\resources\\img\\";
 
     public static String load(String fileName){
         try {
