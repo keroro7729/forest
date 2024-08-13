@@ -10,7 +10,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"
-        tools:text="김진욱 멍청이" />
+        android:text="김진욱바보" />
 
 </FrameLayout>
