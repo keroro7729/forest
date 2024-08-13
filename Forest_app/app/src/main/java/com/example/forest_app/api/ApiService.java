@@ -7,4 +7,7 @@ import retrofit2.http.GET;
 public interface ApiService {
     @GET("api/hello")
     Call<ResponseForm> hello();
+
+    @GET("api/test/get-image")
+    Call<ResponseForm> getImage();
 }

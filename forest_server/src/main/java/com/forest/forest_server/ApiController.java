@@ -37,6 +37,15 @@ public class ApiController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/test/get-image")
+    public ResponseEntity<ResponseForm> getImage(){
+        ResponseForm response = new ResponseForm();
+        response.setResult("Success");
+        response.setMessage("random image file from server");
+        response.setData(ImageLoader.load("fxxk_youjpg.jpg"));
+        return ResponseEntity.ok(response);
+    }
+
     @PostMapping("/user-record")
     public ResponseEntity<ResponseForm> userRecord(@RequestBody RecordForm form){
         Record record = new Record();
