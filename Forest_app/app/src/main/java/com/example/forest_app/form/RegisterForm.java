@@ -1,5 +1,7 @@
 package com.example.forest_app.form;
 
+import java.time.LocalDate;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +11,9 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @ToString
-public class ResponseForm {
-    private String result, message, data;
-    public ResponseForm(){}
+public class RegisterForm {
+    private String birthdate;
+    private String sex;
+    private String aphasiaType;
+    public RegisterForm(){}
 }

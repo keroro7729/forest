@@ -6,7 +6,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Getter @Setter @AllArgsConstructor @ToString
-public class ResponseForm {
-    private String result, message, data;
-    public ResponseForm(){}
+public class AuthForm {
+    private Long id;
+    private String hash;
+    public AuthForm(){}
 }

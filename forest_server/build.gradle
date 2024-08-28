@@ -27,6 +27,10 @@ dependencies {
 	annotationProcessor('org.projectlombok:lombok')
 	//MariaDB
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client:2.7.4'
+	//hashing util
+	implementation 'commons-codec:commons-codec:1.15'
+	//jackson 직렬화
+	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.0'
 }
 
 tasks.named('test') {

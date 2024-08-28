@@ -13,19 +13,18 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.forest_app.api.ApiManager;
+import com.example.forest_app.form.AuthForm;
+import com.example.forest_app.form.RegisterForm;
 import com.example.forest_app.form.ResponseForm;
 import com.example.forest_app.utils.ImageLoader;
 
+import java.time.LocalDate;
 import java.util.Locale;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.forest_app.api.ApiManager;
-import com.example.forest_app.form.ResponseForm;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import retrofit2.Call;
@@ -33,9 +32,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity implements TextToSpeech.OnInitListener {
 
@@ -114,8 +110,28 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         ttsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                speakText("김지훈 바보");
-                Log.d("김지훈 바보", "김지훈 바보");
+                RegisterForm form = new RegisterForm("1999-07-29", "M", "type1");
+
+                Call<AuthForm> call = apiManager.getApiService().createUser(form);
+                call.enqueue(new Callback<AuthForm>() {
+                    @Override
+                    public void onResponse(Call<AuthForm> call, Response<AuthForm> response) {
+                        if(response.isSuccessful()){
+                            AuthForm key = response.body();
+                            Log.d("createUser", "received key: "+key.toString());
+                        }
+                        else{
+                            Log.e("createUser", "Request Info: "+call.request().toString());
+                            Log.e("createUser", "Received Message: ");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<AuthForm> call, Throwable t) {
+                        Log.e("createUser", "Request Info: "+call.request().toString());
+                        Log.e("createUser", "Network Error: "+t.getMessage());
+                    }
+                });
             }
         });
 

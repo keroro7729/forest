@@ -22,14 +22,4 @@ public class ImageLoader {
             return null;
         }
     }
-
-    public static int countFiles(String path){
-        File file = new File(BASE_PATH+path);
-        File[] files = file.listFiles();
-        return files.length;
-    }
-
-    public static int countImages(){
-        return countFiles("/img");
-    }
 }

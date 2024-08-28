@@ -1,31 +1,28 @@
 package com.forest.forest_server;
 
-import com.forest.forest_server.Category.CategorySecvice;
-import com.forest.forest_server.Record.Record;
-import com.forest.forest_server.Record.RecordService;
+import com.forest.forest_server.QuizData.QuizDataService;
+import com.forest.forest_server.User.ForestUser;
 import com.forest.forest_server.User.UserService;
 import com.forest.forest_server.form.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.http.HttpStatus;
 
 @RestController
 @RequestMapping("/api")
 public class ApiController {
 
     private final UserService userService;
-    private final RecordService recordService;
-    private final CategorySecvice categorySecvice;
+    private final QuizDataService quizDataService;
+    private static final Logger logger = LoggerFactory.getLogger(ApiController.class);
 
     @Autowired
-    public ApiController(UserService userService, RecordService recordService,
-                         CategorySecvice categorySecvice){
+    public ApiController(UserService userService, QuizDataService quizDataService){
+        this.quizDataService = quizDataService;
         this.userService = userService;
-        this.recordService = recordService;
-        this.categorySecvice = categorySecvice;
     }
 
     @GetMapping("/hello")
@@ -37,7 +34,7 @@ public class ApiController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/test/get-image")
+    @GetMapping("/get-test-image")
     public ResponseEntity<ResponseForm> getImage(){
         ResponseForm response = new ResponseForm();
         response.setResult("Success");
@@ -46,17 +43,18 @@ public class ApiController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping("/user-record")
-    public ResponseEntity<ResponseForm> userRecord(@RequestBody RecordForm form){
-        Record record = new Record();
-        record.setUserId(form.getUserId());
-        record.setCorrect(form.getCorrect());
-        record.setQuizCat(form.getQuizCat());
-        record.setQuizData(form.getQuizData());
-        record.setTimeStamp(TimeManager.timeStamp());
-        recordService.addRecord(record);
-        ResponseForm response = new ResponseForm();
-        response.setResult("Success");
-        return ResponseEntity.ok(response);
+    @PostMapping("/create-user")
+    public ResponseEntity<AuthForm> createUser(@RequestBody RegisterForm form) {
+        logger.info("Received request to create user with details: {}", form);
+
+        try {
+            ForestUser user = userService.createUser(form);
+            AuthForm auth = new AuthForm(user.getId(), user.getHash());
+            logger.info("User created successfully with ID: {}", user.getId());
+            return ResponseEntity.ok(auth);
+        } catch (Exception e) {
+            logger.error("Error occurred while creating user: ", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 }

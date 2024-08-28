@@ -5,8 +5,12 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDate;
+
 @Getter @Setter @AllArgsConstructor @ToString
-public class ResponseForm {
-    private String result, message, data;
-    public ResponseForm(){}
+public class RegisterForm {
+    private String birthdate;
+    private String sex;
+    private String aphasiaType;
+    public RegisterForm(){}
 }
