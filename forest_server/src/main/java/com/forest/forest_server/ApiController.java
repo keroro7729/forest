@@ -42,7 +42,7 @@ public class ApiController {
         ResponseForm response = new ResponseForm();
         response.setResult("Success");
         response.setMessage("random image file from server");
-        response.setData(ImageLoader.load("fxxk_you.jpg"));
+        response.setData(ImageLoader.load("dog.jpg"));
         return ResponseEntity.ok(response);
     }
 
