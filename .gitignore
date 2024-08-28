@@ -1,0 +1,33 @@
+# 빌드 디렉토리
+/build/
+/app/build/
+/.idea/
+.gradle/
+/local.properties
+
+# 특정 OS에서 생성되는 파일 무시
+.DS_Store
+Thumbs.db
+
+# 개인 설정 파일 무시
+*.iml
+*.hprof
+
+# 로그 및 임시 파일 무시
+*.log
+*.temp
+*.tmp
+
+# 바이너리 파일 무시
+*.apk
+*.ap_
+*.dex
+*.class
+
+# 환경 설정 파일 무시
+/.vscode/
+/.env
+
+# Android Studio 특정 파일 무시
+/captures/
+/.externalNativeBuild/
