@@ -1,4 +1,4 @@
-package com.example.forest_app;
+package com.example.forest_app.fragment;
 
 import android.os.Bundle;
 
@@ -9,10 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.forest_app.R;
 
-public class Fragment4 extends Fragment {
 
-    public Fragment4() {
+public class Fragment3 extends Fragment {
+
+    public Fragment3() {
         // Required empty public constructor
     }
 
@@ -20,6 +22,6 @@ public class Fragment4 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_4, container, false);
+        return inflater.inflate(R.layout.fragment_3, container, false);
     }
 }

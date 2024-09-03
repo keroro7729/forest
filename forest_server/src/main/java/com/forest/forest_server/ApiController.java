@@ -64,7 +64,7 @@ public class ApiController {
         }
     }
 
-    @GetMapping("/find-img-by-word")
+    @PostMapping("/find-img-by-word")
     public ResponseEntity<Text_1_Img_4_Form> findImgByWord(@RequestBody AuthForm auth){
         if(userService.authenticateUser(auth) == null){
             return ResponseEntity.status(401).build(); // auth fail code
@@ -82,7 +82,7 @@ public class ApiController {
         }
     }
 
-    @GetMapping("/find-word-by-img")
+    @PostMapping("/find-word-by-img")
     public ResponseEntity<Text_4_Img_1_Form> findWordByImg(@RequestBody AuthForm auth){
         if(userService.authenticateUser(auth) == null){
             return ResponseEntity.status(401).build(); // auth fail code
@@ -100,7 +100,7 @@ public class ApiController {
         }
     }
 
-    @GetMapping("/find-word-by-listening")
+    @PostMapping("/find-word-by-listening")
     public ResponseEntity<Text_4_Form> findWordByListening(@RequestBody AuthForm auth){
         if(userService.authenticateUser(auth) == null){
             return ResponseEntity.status(401).build(); // auth fail code
@@ -117,7 +117,7 @@ public class ApiController {
         }
     }
 
-    @GetMapping("/find-img-by-listening")
+    @PostMapping("/find-img-by-listening")
     public ResponseEntity<Text_1_Img_4_Form> findImgByListening(@RequestBody AuthForm auth){
         if(userService.authenticateUser(auth) == null){
             return ResponseEntity.status(401).build(); // auth fail code
@@ -135,7 +135,7 @@ public class ApiController {
         }
     }
 
-    @GetMapping("/try-speech")
+    @PostMapping("/try-speech")
     public ResponseEntity<ResponseForm> trySpeech(@RequestBody AuthForm auth){
         if(userService.authenticateUser(auth) == null){
             return ResponseEntity.status(401).build();
@@ -157,7 +157,7 @@ public class ApiController {
         }
     }
 
-    @GetMapping("/find-statement-by-img")
+    @PostMapping("/find-statement-by-img")
     public ResponseEntity<Text_4_Img_1_Form> findStatementByImg(@RequestBody AuthForm auth){
         if(userService.authenticateUser(auth) == null){
             return ResponseEntity.status(401).build(); // auth fail code
@@ -174,7 +174,4 @@ public class ApiController {
             return ResponseEntity.ok().body(new Text_4_Img_1_Form(texts, imgData));
         }
     }
-
-    // 만약 사용자 가록 로깅을 한다면 전부 postmapping으로 바꿔야함
-    // @PostMapping("/user-record")
 }

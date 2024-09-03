@@ -1,4 +1,4 @@
-package com.example.forest_app;
+package com.example.forest_app.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.ListFragment;
+
+import com.example.forest_app.R;
 
 public class MyListFragment extends Fragment {
 

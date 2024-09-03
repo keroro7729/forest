@@ -6,32 +6,32 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.forest_app.Fragment1"
+        android:name="com.example.forest_app.fragment.Fragment1"
         android:label="재활"
         tools:layout="@layout/fragment_1" />
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.forest_app.Fragment2"
+        android:name="com.example.forest_app.fragment.WordImgCureFragment"
         android:label="재활센터정보"
-        tools:layout="@layout/fragment_2" />
+        tools:layout="@layout/fragment_word_img_cure" />
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.forest_app.Fragment3"
+        android:name="com.example.forest_app.fragment.Fragment3"
         android:label="홈"
         tools:layout="@layout/fragment_3" />
     <fragment
         android:id="@+id/navigation_celendars"
-        android:name="com.example.forest_app.Fragment4"
+        android:name="com.example.forest_app.fragment.Fragment4"
         android:label="보호자 커뮤니티"
         tools:layout="@layout/fragment_3" />
     <fragment
         android:id="@+id/navigation_wcs"
-        android:name="com.example.forest_app.Fragment5"
+        android:name="com.example.forest_app.fragment.Fragment5"
         android:label="편의기능"
         tools:layout="@layout/fragment_3" />
     <fragment
         android:id="@+id/navigation_lists"
-        android:name="com.example.forest_app.MyListFragment"
+        android:name="com.example.forest_app.fragment.MyListFragment"
         android:label="재활목록"
         tools:layout="@layout/fragment_my_list" />
 </navigation>

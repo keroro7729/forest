@@ -22,18 +22,18 @@ public interface ApiService {
     @POST("api/create-user")
     Call<AuthForm> createUser(@Body RegisterForm registerForm);
 
-    @GET("api/find-img-by-word")
+    @POST("api/find-img-by-word")
     Call<Text_1_Img_4_Form> findImgByWord(@Body AuthForm auth);
 
-    @GET("api/find-word-by-img")
+    @POST("api/find-word-by-img")
     Call<Text_4_Img_1_Form> findWordByImg(@Body AuthForm auth);
 
-    @GET("api/find-word-by-listening")
+    @POST("api/find-word-by-listening")
     Call<Text_4_Form> findWordByListening(@Body AuthForm auth);
 
-    @GET("api/find-img-by-listening")
+    @POST("api/find-img-by-listening")
     Call<Text_1_Img_4_Form> findImgByListening(@Body AuthForm auth);
 
-    @GET("api/try-speech")
+    @POST("api/try-speech")
     Call<ResponseForm> trySpeech(@Body AuthForm auth);
 }

@@ -13,6 +13,9 @@ import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import com.example.forest_app.form.AuthForm;
+import com.example.forest_app.utils.LocalDatabase;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.Locale;
 
@@ -25,6 +28,10 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // tmp auth token
+        AuthForm token = new AuthForm((long)1, "972872889e790e0813606ff2a82efbefea6a8da6d14a16ce8c3f74e86236c520");
+        LocalDatabase.getInstance(this).putAuthForm("token", token);
 
         // Toolbar 설정
         Toolbar toolbar = findViewById(R.id.toolbar);

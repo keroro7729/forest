@@ -1,4 +1,4 @@
-package com.example.forest_app;
+package com.example.forest_app.fragment;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.forest_app.R;
 import com.example.forest_app.api.ApiManager;
 import com.example.forest_app.form.Text_1_Img_4_Form;
 import com.example.forest_app.form.Text_4_Img_1_Form;
@@ -63,7 +64,8 @@ public class WordImgCureFragment extends Fragment {
     }
 
     private void findWordByImg(){
-        Call<Text_4_Img_1_Form> call = apiManager.getApiService().findWordByImg(ldb.getAuthForm("token"));
+        Call<Text_4_Img_1_Form> call = apiManager.getApiService()
+                .findWordByImg(ldb.getAuthForm("token"));
         call.enqueue(new Callback<Text_4_Img_1_Form>() {
             @Override
             public void onResponse(Call<Text_4_Img_1_Form> call, Response<Text_4_Img_1_Form> response) {
@@ -86,7 +88,8 @@ public class WordImgCureFragment extends Fragment {
     }
 
     private void findImgByWord(){
-        Call<Text_1_Img_4_Form> call = apiManager.getApiService().findImgByWord(ldb.getAuthForm("token"));
+        Call<Text_1_Img_4_Form> call = apiManager.getApiService()
+                .findImgByWord(ldb.getAuthForm("token"));
         call.enqueue(new Callback<Text_1_Img_4_Form>() {
             @Override
             public void onResponse(Call<Text_1_Img_4_Form> call, Response<Text_1_Img_4_Form> response) {

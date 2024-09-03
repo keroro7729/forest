@@ -1,4 +1,4 @@
-package com.example.forest_app;
+package com.example.forest_app.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +11,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
+import com.example.forest_app.R;
 
 public class Fragment1 extends Fragment {
 
