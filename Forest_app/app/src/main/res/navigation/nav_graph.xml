@@ -7,26 +7,31 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.forest_app.Fragment1"
-        android:label="Home"
+        android:label="재활"
         tools:layout="@layout/fragment_1" />
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.example.forest_app.Fragment2"
-        android:label="Dashboard"
+        android:label="재활센터정보"
         tools:layout="@layout/fragment_2" />
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.forest_app.Fragment3"
-        android:label="Notifications"
+        android:label="홈"
         tools:layout="@layout/fragment_3" />
     <fragment
         android:id="@+id/navigation_celendars"
         android:name="com.example.forest_app.Fragment4"
-        android:label="Notifications"
+        android:label="보호자 커뮤니티"
         tools:layout="@layout/fragment_3" />
     <fragment
         android:id="@+id/navigation_wcs"
         android:name="com.example.forest_app.Fragment5"
-        android:label="Notifications"
+        android:label="편의기능"
         tools:layout="@layout/fragment_3" />
+    <fragment
+        android:id="@+id/navigation_lists"
+        android:name="com.example.forest_app.MyListFragment"
+        android:label="재활목록"
+        tools:layout="@layout/fragment_my_list" />
 </navigation>
