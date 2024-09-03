@@ -143,13 +143,35 @@ public class ApiController {
         else{
             ResponseForm response = new ResponseForm();
             List<QuizData> quizPool = quizDataService.getAllQuizData(new ArrayList<>());
-            // todo
+            QuizData selected = RandomSelecter.select(quizPool, 1).get(0);
+            response.setMessage(selected.getText());
             if(Math.random() < 0.5){
                 response.setResult("data:img");
+                response.setData(ImageLoader.load(selected.getImagePath()));
             }
             else{
                 response.setResult("data:null");
+                response.setData(null);
             }
+            return ResponseEntity.ok().body(response);
+        }
+    }
+
+    @GetMapping("/find-statement-by-img")
+    public ResponseEntity<Text_4_Img_1_Form> findStatementByImg(@RequestBody AuthForm auth){
+        if(userService.authenticateUser(auth) == null){
+            return ResponseEntity.status(401).build(); // auth fail code
+        }
+        else{
+            List<QuizData> quizPool = quizDataService.getAllQuizData("statement", null);
+            List<QuizData> selected = RandomSelecter.select(quizPool, 4);
+
+            String imgData = ImageLoader.load(selected.get(0).getImagePath());
+            List<String> texts = new ArrayList<>();
+            for(QuizData row : selected){
+                texts.add(row.getText());
+            }
+            return ResponseEntity.ok().body(new Text_4_Img_1_Form(texts, imgData));
         }
     }
 
