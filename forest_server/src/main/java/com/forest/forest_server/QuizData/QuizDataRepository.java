@@ -1,5 +1,6 @@
 package com.forest.forest_server.QuizData;
 
+import com.forest.forest_server.CategoryTables.QuizDataType;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -9,4 +10,8 @@ public interface QuizDataRepository extends JpaRepository<QuizData, Long> {
     Optional<QuizData> findByText(String text);
 
     List<QuizData> findByTextNotIn(List<String> text);
+
+    List<QuizData> findAllByType(String type);
+
+    List<QuizData> findByTypeAndTextNotIn(String type, List<String> text);
 }
