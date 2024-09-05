@@ -23,12 +23,12 @@
         android:id="@+id/navigation_celendars"
         android:name="com.example.forest_app.fragment.Fragment4"
         android:label="보호자 커뮤니티"
-        tools:layout="@layout/fragment_3" />
+        tools:layout="@layout/fragment_4" />
     <fragment
         android:id="@+id/navigation_wcs"
         android:name="com.example.forest_app.fragment.Fragment5"
         android:label="편의기능"
-        tools:layout="@layout/fragment_3" />
+        tools:layout="@layout/fragment_5" />
     <fragment
         android:id="@+id/navigation_lists"
         android:name="com.example.forest_app.fragment.MyListFragment"

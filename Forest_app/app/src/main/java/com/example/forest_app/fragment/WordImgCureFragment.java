@@ -42,7 +42,7 @@ public class WordImgCureFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_2, container, false);
+        return inflater.inflate(R.layout.fragment_word_img_cure, container, false);
     }
 
     @Override
@@ -65,7 +65,7 @@ public class WordImgCureFragment extends Fragment {
 
     private void findWordByImg(){
         Call<Text_4_Img_1_Form> call = apiManager.getApiService()
-                .findWordByImg(ldb.getAuthForm("token"));
+                .findWordByImg(ldb.getAuthForm("test-token"));
         call.enqueue(new Callback<Text_4_Img_1_Form>() {
             @Override
             public void onResponse(Call<Text_4_Img_1_Form> call, Response<Text_4_Img_1_Form> response) {
@@ -89,7 +89,7 @@ public class WordImgCureFragment extends Fragment {
 
     private void findImgByWord(){
         Call<Text_1_Img_4_Form> call = apiManager.getApiService()
-                .findImgByWord(ldb.getAuthForm("token"));
+                .findImgByWord(ldb.getAuthForm("test-token"));
         call.enqueue(new Callback<Text_1_Img_4_Form>() {
             @Override
             public void onResponse(Call<Text_1_Img_4_Form> call, Response<Text_1_Img_4_Form> response) {

@@ -30,8 +30,10 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         setContentView(R.layout.activity_main);
 
         // tmp auth token
+        LocalDatabase ldb = LocalDatabase.getInstance(this);
         AuthForm token = new AuthForm((long)1, "972872889e790e0813606ff2a82efbefea6a8da6d14a16ce8c3f74e86236c520");
-        LocalDatabase.getInstance(this).putAuthForm("token", token);
+        ldb.clear();
+        LocalDatabase.getInstance(this).putAuthForm("test-token", token);
 
         // Toolbar 설정
         Toolbar toolbar = findViewById(R.id.toolbar);
