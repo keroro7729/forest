@@ -16,9 +16,9 @@
         tools:layout="@layout/fragment_2" />
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.forest_app.fragment.Fragment3"
+        android:name="com.example.forest_app.fragment.CalculatingCureFragment"
         android:label="홈"
-        tools:layout="@layout/fragment_3" />
+        tools:layout="@layout/fragment_calculating_cure" />
     <fragment
         android:id="@+id/navigation_celendars"
         android:name="com.example.forest_app.fragment.Fragment4"

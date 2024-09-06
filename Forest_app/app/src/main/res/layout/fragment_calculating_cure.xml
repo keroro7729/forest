@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragment.CalculatingCureFragment">
+
+    <TextView
+        android:id="@+id/textViewCal"
+        android:layout_width="365dp"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/textViewCal1"
+        android:layout_width="363dp"
+        android:layout_height="28dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textViewCal2"
+        android:layout_width="374dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/buttonCal1"
+        android:layout_width="122dp"
+        android:layout_height="87dp"
+        android:text="Button"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/buttonCal2"
+        android:layout_width="119dp"
+        android:layout_height="88dp"
+        android:text="Button"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/buttonCal3"
+        android:layout_width="120dp"
+        android:layout_height="99dp"
+        android:text="Button"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/buttonCal4"
+        android:layout_width="119dp"
+        android:layout_height="98dp"
+        android:text="Button"
+        android:textSize="20sp" />
+
+</LinearLayout>
