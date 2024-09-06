@@ -11,9 +11,9 @@
         tools:layout="@layout/fragment_1" />
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.forest_app.fragment.WordImgCureFragment"
+        android:name="com.example.forest_app.fragment.Fragment2"
         android:label="재활센터정보"
-        tools:layout="@layout/fragment_word_img_cure" />
+        tools:layout="@layout/fragment_2" />
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.forest_app.fragment.Fragment3"
@@ -29,9 +29,22 @@
         android:name="com.example.forest_app.fragment.Fragment5"
         android:label="편의기능"
         tools:layout="@layout/fragment_5" />
+
     <fragment
         android:id="@+id/navigation_lists"
         android:name="com.example.forest_app.fragment.MyListFragment"
         android:label="재활목록"
         tools:layout="@layout/fragment_my_list" />
+
+    <fragment
+        android:id="@+id/word_img_cure"
+        android:name="com.example.forest_app.fragment.WordImgCureFragment"
+        android:label="단어 이미지 연관짓기"
+        tools:layout="@layout/fragment_word_img_cure" />
+
+    <fragment
+        android:id="@+id/listening_cure"
+        android:name="com.example.forest_app.fragment.ListeningCureFragment"
+        android:label="청각훈련"
+        tools:layout="@layout/fragment_listening_cure" />
 </navigation>

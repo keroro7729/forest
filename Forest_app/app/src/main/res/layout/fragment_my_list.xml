@@ -5,22 +5,22 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/word_img_cure_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="단어 이미지 연관짓기" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/calculating_cure_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="계산하기" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/listening_cure_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="청각훈련" />
 
     <Button
         android:id="@+id/button4"

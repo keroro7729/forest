@@ -39,8 +39,6 @@ public class WordImgCureFragment extends Fragment {
     private final ApiManager apiManager = new ApiManager();
     private LocalDatabase ldb;
     private LinearLayout layoutRow1, layoutRow2, layoutRow3;
-    //private Button select1, select2, select3, select4;
-    //private ImageView imageView;
 
     public WordImgCureFragment() {
         // Required empty public constructor
@@ -62,6 +60,14 @@ public class WordImgCureFragment extends Fragment {
         refresh();
     }
 
+    private void initialize(){
+        ldb = LocalDatabase.getInstance(getContext());
+        View view = getView();
+        layoutRow1 = view.findViewById(R.id.wi_layout_row1);
+        layoutRow2 = view.findViewById(R.id.wi_layout_row2);
+        layoutRow3 = view.findViewById(R.id.wi_layout_row3);
+    }
+
     private void refresh(){
         layoutRow1.removeAllViews();
         layoutRow2.removeAllViews();
@@ -70,21 +76,6 @@ public class WordImgCureFragment extends Fragment {
         if(Math.random() < 0.5)
             findWordByImg();
         else findImgByWord();
-    }
-
-    private void initialize(){
-        ldb = LocalDatabase.getInstance(getContext());
-        View view = getView();
-        layoutRow1 = view.findViewById(R.id.layout_row1);
-        layoutRow2 = view.findViewById(R.id.layout_row2);
-        layoutRow3 = view.findViewById(R.id.layout_row3);
-        /*
-        imageView = view.findViewById(R.id.imageView);
-        select1 = view.findViewById(R.id.select_button1);
-        select2 = view.findViewById(R.id.select_button2);
-        select3 = view.findViewById(R.id.select_button3);
-        select4 = view.findViewById(R.id.select_button4);
-        */
     }
 
     private void findWordByImg(){
@@ -126,6 +117,7 @@ public class WordImgCureFragment extends Fragment {
                 else{
                     Log.e("findImgByWord", "http fail code: "+response.code()+"\n"
                             +"request info: "+call.request());
+                    noInternet();
                 }
             }
 
@@ -133,6 +125,7 @@ public class WordImgCureFragment extends Fragment {
             public void onFailure(Call<Text_1_Img_4_Form> call, Throwable t) {
                 Log.e("findImgByWord", "Network error: "+t.getMessage()+"\n"
                         +"request info: "+call.request());
+                noInternet();
             }
         });
     }

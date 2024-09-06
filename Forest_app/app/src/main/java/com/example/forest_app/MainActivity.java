@@ -16,12 +16,13 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.forest_app.form.AuthForm;
 import com.example.forest_app.utils.LocalDatabase;
+import com.example.forest_app.utils.TTSManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity implements TextToSpeech.OnInitListener {
+public class MainActivity extends AppCompatActivity {
 
-    private TextToSpeech tts;
+    private TTSManager tts;
     private View fragmentContainer;
 
     @Override
@@ -62,6 +63,9 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         } else {
             Log.e("MainActivity", "NavHostFragment is null. Make sure it is correctly defined in the XML.");
         }
+
+        // initialize tts manager
+        tts = TTSManager.getInstance(this);
     }
 
     @Override
@@ -70,30 +74,9 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         return navController.navigateUp() || super.onSupportNavigateUp();
     }
 
-    private void speakText(String text) {
-        if (tts != null) {
-            tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
-        }
-    }
-
-    @Override
-    public void onInit(int status) {
-        if (status == TextToSpeech.SUCCESS) {
-            int language = tts.setLanguage(Locale.KOREAN);
-            if (language == TextToSpeech.LANG_MISSING_DATA || language == TextToSpeech.LANG_NOT_SUPPORTED) {
-                Log.e("MainActivity.onInit()", "Unsupported language");
-            }
-        } else {
-            Log.e("MainActivity.onInit()", "Initialization failed");
-        }
-    }
-
     @Override
     protected void onDestroy() {
-        if (tts != null) {
-            tts.stop();
-            tts.shutdown();
-        }
+        tts.shutdown();
         super.onDestroy();
     }
 }

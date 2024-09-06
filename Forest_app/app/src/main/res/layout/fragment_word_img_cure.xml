@@ -15,7 +15,7 @@
         android:layout_gravity="center">
 
         <LinearLayout
-            android:id="@+id/layout_row1"
+            android:id="@+id/wi_layout_row1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -24,7 +24,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/layout_row2"
+            android:id="@+id/wi_layout_row2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -34,7 +34,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/layout_row3"
+            android:id="@+id/wi_layout_row3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
