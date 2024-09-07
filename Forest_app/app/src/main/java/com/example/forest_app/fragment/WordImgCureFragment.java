@@ -182,11 +182,13 @@ public class WordImgCureFragment extends Fragment {
     }
 
     private void constructLayout(Text_1_Img_4_Form form){
-        // 강조 해주라
         TextView textView = new TextView(getContext());
         textView.setText(form.getText());
-        textView.setTextSize(16);
+        textView.setTextSize(20);
+        textView.setTypeface(Typeface.DEFAULT_BOLD);
         textView.setTextColor(Color.BLACK);
+        textView.setGravity(Gravity.CENTER);
+        textView.setBackgroundColor(Color.rgb(226, 226, 226));
         LinearLayout.LayoutParams textParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
@@ -252,10 +254,10 @@ public class WordImgCureFragment extends Fragment {
         params.setMargins(16, 16, 16, 16);  // 여백 설정
 
         textView.setLayoutParams(params);
-        textView.setText("서버에 접속 할 수 없습니다");    // 제목 문구 설정
-        textView.setTextSize(24);                     // 텍스트 크기 설정
-        textView.setTypeface(Typeface.DEFAULT_BOLD);  // 텍스트 굵기 설정
-        textView.setTextColor(Color.BLACK);           // 텍스트 색상 설정
+        textView.setText("서버에 접속 할 수 없습니다");
+        textView.setTextSize(24);
+        textView.setTypeface(Typeface.DEFAULT_BOLD);
+        textView.setTextColor(Color.BLACK);
         textView.setGravity(Gravity.CENTER);
         textView.setBackgroundColor(Color.rgb(226, 226, 226));
         layoutRow2.addView(textView);

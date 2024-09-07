@@ -77,6 +77,7 @@ public class ListeningCureFragment extends Fragment {
     }
 
     private void refresh(){
+        answer = null;
         findWordByListening();
     }
 

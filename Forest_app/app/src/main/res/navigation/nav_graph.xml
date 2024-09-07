@@ -16,9 +16,9 @@
         tools:layout="@layout/fragment_2" />
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.forest_app.fragment.CalculatingCureFragment"
+        android:name="com.example.forest_app.fragment.Fragment3"
         android:label="홈"
-        tools:layout="@layout/fragment_calculating_cure" />
+        tools:layout="@layout/fragment_3" />
     <fragment
         android:id="@+id/navigation_celendars"
         android:name="com.example.forest_app.fragment.Fragment4"
@@ -32,9 +32,9 @@
 
     <fragment
         android:id="@+id/navigation_lists"
-        android:name="com.example.forest_app.fragment.MyListFragment"
+        android:name="com.example.forest_app.fragment.CureListFragment"
         android:label="재활목록"
-        tools:layout="@layout/fragment_my_list" />
+        tools:layout="@layout/fragment_cure_list" />
 
     <fragment
         android:id="@+id/word_img_cure"
@@ -47,4 +47,23 @@
         android:name="com.example.forest_app.fragment.ListeningCureFragment"
         android:label="청각훈련"
         tools:layout="@layout/fragment_listening_cure" />
+
+    <fragment
+        android:id="@+id/recog_cure"
+        android:name="com.example.forest_app.fragment.RecogCureFragment"
+        android:label="인지재활"
+        tools:layout="@layout/fragment_recog_cure" />
+
+    <fragment
+        android:id="@+id/calculate_cure"
+        android:name="com.example.forest_app.fragment.CalculatingCureFragment"
+        android:label="계산하기"
+        tools:layout="@layout/fragment_calculating_cure"/>
+
+    <fragment
+        android:id="@+id/speek_cure"
+        android:name="com.example.forest_app.fragment.SpeekCureFragment"
+        android:label="발음하기"
+        tools:layout="@layout/fragment_speek_cure"/>
+
 </navigation>
