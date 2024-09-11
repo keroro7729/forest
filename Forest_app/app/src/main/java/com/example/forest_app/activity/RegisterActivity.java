@@ -67,6 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
         skipButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //
                 AuthForm token = new AuthForm((long)1, "972872889e790e0813606ff2a82efbefea6a8da6d14a16ce8c3f74e86236c520");
                 LocalDatabase.getInstance(getApplicationContext()).putAuthForm("token", token);
                 finish();

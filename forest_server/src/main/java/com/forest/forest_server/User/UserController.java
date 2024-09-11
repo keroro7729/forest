@@ -14,17 +14,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.apache.commons.codec.digest.DigestUtils;
 
+import java.time.LocalDateTime;
+
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
 
-    private final UserService forestUserService;
+    private final UserService userService;
     private final UserDataService userDataService;
     private final UserFamService userFamService;
 
     @Autowired
-    public UserController(UserService forestUserService, UserDataService userDataService, UserFamService userFamService) {
-        this.forestUserService = forestUserService;
+    public UserController(UserService userService, UserDataService userDataService, UserFamService userFamService) {
+        this.userService = userService;
         this.userDataService = userDataService;
         this.userFamService = userFamService;
     }
@@ -57,7 +59,7 @@ public class UserController {
         forestUser.setUserData(userData);  // Required
         forestUser.setHashValue(DigestUtils.sha256Hex(form.toString())); // 해시값 생성
 
-        ForestUser savedForestUser = forestUserService.createUser(forestUser);
+        ForestUser savedForestUser = userService.createUser(forestUser);
 
         // 4. Return AuthForm
         AuthForm authForm = new AuthForm();
@@ -68,8 +70,11 @@ public class UserController {
     }
 
     public boolean authenticateUser(AuthForm form) {
-        ForestUser user = forestUserService.getForestUserById(form.getId());
+        ForestUser user = userService.getForestUserById(form.getId());
         if (user != null && user.getHashValue().equals(form.getHash())) {
+            UserData userData = userService.getForestUserById(form.getId()).getUserData();
+            userData.setLastLogin(LocalDateTime.now());
+            userDataService.updateUserData(userData);
             return true;
         }
         return false;

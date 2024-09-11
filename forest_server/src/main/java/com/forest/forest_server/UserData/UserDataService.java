@@ -30,4 +30,11 @@ public class UserDataService {
     public void deleteUserData(Long id) {
         userDataRepository.deleteById(id);
     }
+
+    public UserData updateUserData(UserData userData){
+        Long id = userData.getId();
+        if(id == null || id == 0)
+            return null;
+        return userDataRepository.save(userData);
+    }
 }
