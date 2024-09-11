@@ -1,45 +1,46 @@
 package com.forest.forest_server.User;
 
+import com.forest.forest_server.UserData.UserData;
+import com.forest.forest_server.UserFam.UserFam;
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import org.apache.commons.codec.digest.DigestUtils;
 
 @Entity
 @Table(name = "forest_user")
-@Getter
-@Setter
-@NoArgsConstructor
+@Getter @Setter
 public class ForestUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private Long id;
 
-    @Column(name = "birthdate", nullable = false)
-    private String birthdate;
+    @Column(name = "name", nullable = false)
+    private String name;
 
-    @Column(name = "sex", nullable = false, length = 1)
-    private String sex;
+    @Column(name = "birth_date", nullable = false)
+    private String birthDate;
 
-    @Column(name = "aphasia_type", nullable = false, length = 10)
+    @Column(name = "aphasia_type")
     private String aphasiaType;
 
-    @Column(name = "create_time", nullable = false, updatable = false)
-    private String createTime;
+    @Column(name = "phone_number", nullable = false)
+    private String phoneNumber;
 
-    @Column(name = "hash", nullable = false, length = 64)
-    private String hash;
+    @Column(name = "email")
+    private String email;
 
-    @PrePersist
-    public void prePersist() {
-        this.createTime = LocalDateTime.now().toString();
-        Integer rand = (int)(Math.random()*100000);
-        String data = birthdate.toString() + sex + aphasiaType + createTime.toString() + rand.toString();
-        this.hash = DigestUtils.sha256Hex(data);
-    }
+    @ManyToOne
+    @JoinColumn(name = "user_fam_id", referencedColumnName = "user_fam_id", foreignKey = @ForeignKey(name = "fk_user_fam"), nullable = true)
+    private UserFam userFam;  // nullable: 보호자 정보는 선택 사항
+
+    @OneToOne
+    @JoinColumn(name = "user_data_id", referencedColumnName = "user_data_id", foreignKey = @ForeignKey(name = "fk_user_data"), nullable = false)
+    private UserData userData; // 사용자의 데이터를 저장하는 외래 키
+
+    @Column(name = "hash_value", nullable = false)
+    private String hashValue;
+
+    public ForestUser(){}
 }

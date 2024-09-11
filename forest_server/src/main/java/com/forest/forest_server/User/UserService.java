@@ -1,12 +1,8 @@
 package com.forest.forest_server.User;
 
-import com.forest.forest_server.form.AuthForm;
-import com.forest.forest_server.form.RegisterForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -18,24 +14,33 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    @Transactional
-    public ForestUser createUser(RegisterForm form) {
-        ForestUser user = new ForestUser();
-        user.setBirthdate(form.getBirthdate());
-        user.setSex(form.getSex());
-        user.setAphasiaType(form.getAphasiaType());
-
-        return userRepository.save(user);
+    public ForestUser createUser(ForestUser forestUser) {
+        return userRepository.save(forestUser);
     }
 
-    public ForestUser authenticateUser(AuthForm form) {
-        ForestUser user = userRepository.findById(form.getId())
-                .orElse(null);
+    public ForestUser getForestUserById(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
 
-        if (user == null || !user.getHash().equals(form.getHash())) {
-            return null;
-        }
+    public List<ForestUser> getAllForestUsers() {
+        return userRepository.findAll();
+    }
 
-        return user;
+    public void deleteForestUser(Long id) {
+        userRepository.deleteById(id);
+    }
+
+    public ForestUser updateForestUser(Long id, ForestUser updatedUser) {
+        return userRepository.findById(id).map(forestUser -> {
+            forestUser.setName(updatedUser.getName());
+            forestUser.setBirthDate(updatedUser.getBirthDate());
+            forestUser.setAphasiaType(updatedUser.getAphasiaType());
+            forestUser.setPhoneNumber(updatedUser.getPhoneNumber());
+            forestUser.setEmail(updatedUser.getEmail());
+            forestUser.setUserFam(updatedUser.getUserFam());
+            forestUser.setUserData(updatedUser.getUserData());
+            forestUser.setHashValue(updatedUser.getHashValue());
+            return userRepository.save(forestUser);
+        }).orElse(null);
     }
 }

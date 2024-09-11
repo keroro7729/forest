@@ -19,8 +19,8 @@ public interface ApiService {
     @GET("api/get-test-image")
     Call<ResponseForm> getImage();
 
-    @POST("api/create-user")
-    Call<AuthForm> createUser(@Body RegisterForm registerForm);
+    @POST("api/user/register-user")
+    Call<AuthForm> registerUser(@Body RegisterForm registerForm);
 
     @POST("api/find-img-by-word")
     Call<Text_1_Img_4_Form> findImgByWord(@Body AuthForm auth);

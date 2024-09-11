@@ -3,6 +3,7 @@ package com.forest.forest_server;
 import com.forest.forest_server.QuizData.QuizData;
 import com.forest.forest_server.QuizData.QuizDataService;
 import com.forest.forest_server.User.ForestUser;
+import com.forest.forest_server.User.UserController;
 import com.forest.forest_server.User.UserService;
 import com.forest.forest_server.form.*;
 import org.slf4j.Logger;
@@ -20,15 +21,15 @@ import java.util.List;
 @RequestMapping("/api")
 public class ApiController {
 
-    private final UserService userService;
     private final QuizDataService quizDataService;
+    private final UserController userController;
     private static final Logger logger = LoggerFactory.getLogger(ApiController.class);
 
 
     @Autowired
-    public ApiController(UserService userService, QuizDataService quizDataService){
+    public ApiController(QuizDataService quizDataService, UserController userController){
         this.quizDataService = quizDataService;
-        this.userService = userService;
+        this.userController = userController;
     }
 
     @GetMapping("/hello")
@@ -49,24 +50,9 @@ public class ApiController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping("/create-user")
-    public ResponseEntity<AuthForm> createUser(@RequestBody RegisterForm form) {
-        logger.info("Received request to create user with details: {}", form);
-
-        try {
-            ForestUser user = userService.createUser(form);
-            AuthForm auth = new AuthForm(user.getId(), user.getHash());
-            logger.info("User created successfully with ID: {}", user.getId());
-            return ResponseEntity.ok(auth);
-        } catch (Exception e) {
-            logger.error("Error occurred while creating user: ", e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
-
     @PostMapping("/find-img-by-word")
     public ResponseEntity<Text_1_Img_4_Form> findImgByWord(@RequestBody AuthForm auth){
-        if(userService.authenticateUser(auth) == null){
+        if(userController.authenticateUser(auth)){
             return ResponseEntity.status(401).build(); // auth fail code
         }
         else{
@@ -84,7 +70,7 @@ public class ApiController {
 
     @PostMapping("/find-word-by-img")
     public ResponseEntity<Text_4_Img_1_Form> findWordByImg(@RequestBody AuthForm auth){
-        if(userService.authenticateUser(auth) == null){
+        if(userController.authenticateUser(auth)){
             return ResponseEntity.status(401).build(); // auth fail code
         }
         else{
@@ -102,7 +88,7 @@ public class ApiController {
 
     @PostMapping("/find-word-by-listening")
     public ResponseEntity<Text_4_Form> findWordByListening(@RequestBody AuthForm auth){
-        if(userService.authenticateUser(auth) == null){
+        if(userController.authenticateUser(auth)){
             return ResponseEntity.status(401).build(); // auth fail code
         }
         else{
@@ -119,7 +105,7 @@ public class ApiController {
 
     @PostMapping("/find-img-by-listening")
     public ResponseEntity<Text_1_Img_4_Form> findImgByListening(@RequestBody AuthForm auth){
-        if(userService.authenticateUser(auth) == null){
+        if(userController.authenticateUser(auth)){
             return ResponseEntity.status(401).build(); // auth fail code
         }
         else{
@@ -137,7 +123,7 @@ public class ApiController {
 
     @PostMapping("/try-speech")
     public ResponseEntity<ResponseForm> trySpeech(@RequestBody AuthForm auth){
-        if(userService.authenticateUser(auth) == null){
+        if(userController.authenticateUser(auth)){
             return ResponseEntity.status(401).build();
         }
         else{
@@ -159,7 +145,7 @@ public class ApiController {
 
     @PostMapping("/find-statement-by-img")
     public ResponseEntity<Text_4_Img_1_Form> findStatementByImg(@RequestBody AuthForm auth){
-        if(userService.authenticateUser(auth) == null){
+        if(userController.authenticateUser(auth)){
             return ResponseEntity.status(401).build(); // auth fail code
         }
         else{

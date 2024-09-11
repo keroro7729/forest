@@ -183,7 +183,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void createUser(){
-        Call<AuthForm> call = apiManager.getApiService().createUser(form);
+        Call<AuthForm> call = apiManager.getApiService().registerUser(form);
         call.enqueue(new Callback<AuthForm>() {
             @Override
             public void onResponse(Call<AuthForm> call, Response<AuthForm> response) {
