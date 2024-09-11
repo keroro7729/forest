@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         // init local database
         LocalDatabase ldb = LocalDatabase.getInstance(this);
+        ldb.remove("token");
 
         // Toolbar 설정
         Toolbar toolbar = findViewById(R.id.toolbar);

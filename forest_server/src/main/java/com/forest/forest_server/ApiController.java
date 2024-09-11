@@ -52,7 +52,7 @@ public class ApiController {
 
     @PostMapping("/find-img-by-word")
     public ResponseEntity<Text_1_Img_4_Form> findImgByWord(@RequestBody AuthForm auth){
-        if(userController.authenticateUser(auth)){
+        if(!userController.authenticateUser(auth)){
             return ResponseEntity.status(401).build(); // auth fail code
         }
         else{
@@ -70,7 +70,7 @@ public class ApiController {
 
     @PostMapping("/find-word-by-img")
     public ResponseEntity<Text_4_Img_1_Form> findWordByImg(@RequestBody AuthForm auth){
-        if(userController.authenticateUser(auth)){
+        if(!userController.authenticateUser(auth)){
             return ResponseEntity.status(401).build(); // auth fail code
         }
         else{
@@ -88,7 +88,7 @@ public class ApiController {
 
     @PostMapping("/find-word-by-listening")
     public ResponseEntity<Text_4_Form> findWordByListening(@RequestBody AuthForm auth){
-        if(userController.authenticateUser(auth)){
+        if(!userController.authenticateUser(auth)){
             return ResponseEntity.status(401).build(); // auth fail code
         }
         else{
@@ -105,7 +105,7 @@ public class ApiController {
 
     @PostMapping("/find-img-by-listening")
     public ResponseEntity<Text_1_Img_4_Form> findImgByListening(@RequestBody AuthForm auth){
-        if(userController.authenticateUser(auth)){
+        if(!userController.authenticateUser(auth)){
             return ResponseEntity.status(401).build(); // auth fail code
         }
         else{
@@ -123,7 +123,7 @@ public class ApiController {
 
     @PostMapping("/try-speech")
     public ResponseEntity<ResponseForm> trySpeech(@RequestBody AuthForm auth){
-        if(userController.authenticateUser(auth)){
+        if(!userController.authenticateUser(auth)){
             return ResponseEntity.status(401).build();
         }
         else{
@@ -145,7 +145,7 @@ public class ApiController {
 
     @PostMapping("/find-statement-by-img")
     public ResponseEntity<Text_4_Img_1_Form> findStatementByImg(@RequestBody AuthForm auth){
-        if(userController.authenticateUser(auth)){
+        if(!userController.authenticateUser(auth)){
             return ResponseEntity.status(401).build(); // auth fail code
         }
         else{

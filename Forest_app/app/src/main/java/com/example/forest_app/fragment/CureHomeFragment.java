@@ -14,13 +14,13 @@ import androidx.navigation.Navigation;
 
 import com.example.forest_app.R;
 
-public class Fragment1 extends Fragment {
+public class CureHomeFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_1, container, false);
+        View view = inflater.inflate(R.layout.fragment_cure_home, container, false);
 
 
         ImageView imageView = view.findViewById(R.id.imageView1);

@@ -1,11 +1,14 @@
 package com.forest.forest_server.User;
 
+import com.forest.forest_server.ApiController;
 import com.forest.forest_server.UserData.UserData;
 import com.forest.forest_server.UserData.UserDataService;
 import com.forest.forest_server.UserFam.UserFam;
 import com.forest.forest_server.UserFam.UserFamService;
 import com.forest.forest_server.form.AuthForm;
 import com.forest.forest_server.form.RegisterForm;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +26,8 @@ public class UserController {
     private final UserService userService;
     private final UserDataService userDataService;
     private final UserFamService userFamService;
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+
 
     @Autowired
     public UserController(UserService userService, UserDataService userDataService, UserFamService userFamService) {
@@ -71,6 +76,9 @@ public class UserController {
 
     public boolean authenticateUser(AuthForm form) {
         ForestUser user = userService.getForestUserById(form.getId());
+        //logger.info("auth form hash: {}", form.getHash());
+        //logger.info("user hash: {}", user.getHashValue());
+        //logger.info("condition boolean {}", user != null && user.getHashValue().equals(form.getHash()));
         if (user != null && user.getHashValue().equals(form.getHash())) {
             UserData userData = userService.getForestUserById(form.getId()).getUserData();
             userData.setLastLogin(LocalDateTime.now());

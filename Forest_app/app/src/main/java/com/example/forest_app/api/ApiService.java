@@ -30,7 +30,7 @@ public interface ApiService {
     @GET("api/get-test-image")
     Call<ResponseForm> getImage();
 
-    @POST("api/user/register-user")
+    @POST("api/users/register-user")
     Call<AuthForm> registerUser(@Body RegisterForm registerForm);
 
     @POST("api/find-img-by-word")
