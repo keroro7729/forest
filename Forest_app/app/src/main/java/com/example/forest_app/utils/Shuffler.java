@@ -7,7 +7,7 @@ import java.util.List;
 public class Shuffler {
     public static List<Integer> get(int n){
         List<Integer> result = new ArrayList<>();
-        for(int i=1; i<=n; i++) result.add(i);
+        for(int i=0; i<n; i++) result.add(i);
         Collections.shuffle(result);
         return result;
     }

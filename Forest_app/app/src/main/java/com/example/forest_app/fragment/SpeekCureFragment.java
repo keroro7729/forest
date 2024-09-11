@@ -76,7 +76,7 @@ public class SpeekCureFragment extends Fragment {
     }
 
     private void trySpeek(){
-        Call<ResponseForm> call = apiManager.getApiService().trySpeech(ldb.getAuthForm("test-token"));
+        Call<ResponseForm> call = apiManager.getApiService().trySpeech(ldb.getAuthForm("token"));
         call.enqueue(new Callback<ResponseForm>() {
             @Override
             public void onResponse(Call<ResponseForm> call, Response<ResponseForm> response) {
@@ -88,6 +88,7 @@ public class SpeekCureFragment extends Fragment {
                         default: // error log
                     }
                     answer = form.getMessage();
+                    tts.speak("따라해 보세요. "+answer);
                     constructLayout();
                 }
                 else{
@@ -109,20 +110,35 @@ public class SpeekCureFragment extends Fragment {
     private void constructLayout(){
         if(imgData == null){
             TextView textView = new TextView(getContext());
-            textView.setLayoutParams(new LinearLayout.LayoutParams(300, 100));
+            textView.setLayoutParams(new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+            ));
             textView.setText(answer);
             textView.setTextSize(24);
             textView.setTypeface(Typeface.DEFAULT_BOLD);
             textView.setTextColor(Color.BLACK);
             textView.setGravity(Gravity.CENTER);
             textView.setBackgroundColor(Color.rgb(226, 226, 226));
+            textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    tts.speak(answer);
+                }
+            });
             layout.addView(textView);
         }
         else{
             ImageView imageView = new ImageView(getContext());
             Bitmap bm = ImageLoader.convertToBitMap(imgData);
             imageView.setImageBitmap(bm);
-            imageView.setLayoutParams(new LinearLayout.LayoutParams(300, 300));
+            imageView.setLayoutParams(new LinearLayout.LayoutParams(600, 600));
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    tts.speak(answer);
+                }
+            });
             layout.addView(imageView);
         }
     }

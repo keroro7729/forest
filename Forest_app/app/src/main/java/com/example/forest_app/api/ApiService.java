@@ -37,6 +37,6 @@ public interface ApiService {
     @POST("api/try-speech")
     Call<ResponseForm> trySpeech(@Body AuthForm auth);
 
-    @POST("api/find-statment-by-img")
+    @POST("api/find-statement-by-img")
     Call<Text_4_Img_1_Form> findStatementByImg(@Body AuthForm auth);
 }

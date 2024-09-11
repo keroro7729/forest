@@ -163,7 +163,7 @@ public class ApiController {
             return ResponseEntity.status(401).build(); // auth fail code
         }
         else{
-            List<QuizData> quizPool = quizDataService.getAllQuizData("statement", null);
+            List<QuizData> quizPool = quizDataService.getAllQuizData("state", null);
             List<QuizData> selected = RandomSelecter.select(quizPool, 4);
 
             String imgData = ImageLoader.load(selected.get(0).getImagePath());

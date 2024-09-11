@@ -80,7 +80,7 @@ public class WordImgCureFragment extends Fragment {
 
     private void findWordByImg(){
         Call<Text_4_Img_1_Form> call = apiManager.getApiService()
-                .findWordByImg(ldb.getAuthForm("test-token"));
+                .findWordByImg(ldb.getAuthForm("token"));
         call.enqueue(new Callback<Text_4_Img_1_Form>() {
             @Override
             public void onResponse(Call<Text_4_Img_1_Form> call, Response<Text_4_Img_1_Form> response) {
@@ -106,7 +106,7 @@ public class WordImgCureFragment extends Fragment {
 
     private void findImgByWord(){
         Call<Text_1_Img_4_Form> call = apiManager.getApiService()
-                .findImgByWord(ldb.getAuthForm("test-token"));
+                .findImgByWord(ldb.getAuthForm("token"));
         call.enqueue(new Callback<Text_1_Img_4_Form>() {
             @Override
             public void onResponse(Call<Text_1_Img_4_Form> call, Response<Text_1_Img_4_Form> response) {
@@ -142,18 +142,16 @@ public class WordImgCureFragment extends Fragment {
         int count = 0;
         for(int i : Shuffler.get()){
             String text = form.getTexts().get(i);
-            TextView textView = new TextView(getContext());
-            textView.setText(text);
-            textView.setTextSize(16);
-            textView.setTextColor(Color.BLACK);
+            Button button = new Button(getContext());
+            button.setText(text);
             LinearLayout.LayoutParams textParams = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
             );
-            textView.setLayoutParams(textParams);
+            button.setLayoutParams(textParams);
 
             if(i == 0){ // when correct answer
-                textView.setOnClickListener(new View.OnClickListener() {
+                button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(getContext(), "정답입니다!", Toast.LENGTH_LONG).show();
@@ -162,20 +160,20 @@ public class WordImgCureFragment extends Fragment {
                 });
             }
             else{ // when wrong answer
-                textView.setOnClickListener(new View.OnClickListener() {
+                button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(getContext(), "오답입니다! 다시 선택해보세요!", Toast.LENGTH_LONG).show();
-                        textView.setBackgroundColor(Color.rgb(223, 100, 100));
+                        button.setBackgroundColor(Color.rgb(223, 100, 100));
                     }
                 });
             }
 
             switch(count){
                 case 0:
-                case 1: layoutRow2.addView(textView); break;
+                case 1: layoutRow2.addView(button); break;
                 case 2:
-                case 3: layoutRow3.addView(textView); break;
+                case 3: layoutRow3.addView(button); break;
                 default: //error log
             } count++;
         }

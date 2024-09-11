@@ -78,11 +78,15 @@ public class ListeningCureFragment extends Fragment {
 
     private void refresh(){
         answer = null;
+        lcbutton1.setBackgroundColor(Color.rgb(226, 226, 226));
+        lcbutton2.setBackgroundColor(Color.rgb(226, 226, 226));
+        lcbutton3.setBackgroundColor(Color.rgb(226, 226, 226));
+        lcbutton4.setBackgroundColor(Color.rgb(226, 226, 226));
         findWordByListening();
     }
 
     private void findWordByListening(){
-        Call<Text_4_Form> call = apiManager.getApiService().findWordByListening(ldb.getAuthForm("test-token"));
+        Call<Text_4_Form> call = apiManager.getApiService().findWordByListening(ldb.getAuthForm("token"));
         call.enqueue(new Callback<Text_4_Form>() {
             @Override
             public void onResponse(Call<Text_4_Form> call, Response<Text_4_Form> response) {
@@ -111,7 +115,7 @@ public class ListeningCureFragment extends Fragment {
         int count = 0;
         for(int i : Shuffler.get()){
             String text = form.getTexts().get(i);
-            switch(count){
+            switch(count++){
                 case 0: lcbutton1.setText(text); setClickListener(lcbutton1, i == 0); break;
                 case 1: lcbutton2.setText(text); setClickListener(lcbutton2, i == 0); break;
                 case 2: lcbutton3.setText(text); setClickListener(lcbutton3, i == 0); break;

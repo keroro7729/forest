@@ -79,11 +79,13 @@ public class RecogCureFragment extends Fragment {
 
     private void refresh(){
         answer = null;
+        for(Button b : buttons)
+            b.setBackgroundColor(Color.rgb(226,226,226));
         findStatementByImg();
     }
 
     private void findStatementByImg(){
-        Call<Text_4_Img_1_Form> call = apiManager.getApiService().findStatementByImg(ldb.getAuthForm("test-token"));
+        Call<Text_4_Img_1_Form> call = apiManager.getApiService().findStatementByImg(ldb.getAuthForm("token"));
         call.enqueue(new Callback<Text_4_Img_1_Form>() {
             @Override
             public void onResponse(Call<Text_4_Img_1_Form> call, Response<Text_4_Img_1_Form> response) {

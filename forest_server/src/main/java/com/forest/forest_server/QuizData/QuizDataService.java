@@ -1,7 +1,5 @@
 package com.forest.forest_server.QuizData;
 
-import com.forest.forest_server.CategoryTables.QuizDataType;
-import com.forest.forest_server.CategoryTables.QuizDataTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +12,7 @@ public class QuizDataService {
     private final QuizDataRepository quizDataRepository;
 
     @Autowired
-    public QuizDataService(QuizDataRepository quizDataRepository, QuizDataTypeRepository typeRepository){
+    public QuizDataService(QuizDataRepository quizDataRepository){
         this.quizDataRepository = quizDataRepository;
     }
 

@@ -12,8 +12,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class RegisterForm {
-    private String birthdate;
-    private String sex;
-    private String aphasiaType;
+    private String name, birth, diseaseType, phoneNum, email;
+    private String famName, famBirth, famPhoneNum, famEmail;
     public RegisterForm(){}
 }

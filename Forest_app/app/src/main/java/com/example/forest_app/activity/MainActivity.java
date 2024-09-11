@@ -1,5 +1,6 @@
-package com.example.forest_app;
+package com.example.forest_app.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
@@ -14,6 +15,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.forest_app.R;
 import com.example.forest_app.form.AuthForm;
 import com.example.forest_app.utils.LocalDatabase;
 import com.example.forest_app.utils.TTSManager;
@@ -30,11 +32,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // tmp auth token
+        // init local database
         LocalDatabase ldb = LocalDatabase.getInstance(this);
-        AuthForm token = new AuthForm((long)1, "972872889e790e0813606ff2a82efbefea6a8da6d14a16ce8c3f74e86236c520");
-        ldb.clear();
-        LocalDatabase.getInstance(this).putAuthForm("test-token", token);
 
         // Toolbar 설정
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -66,6 +65,12 @@ public class MainActivity extends AppCompatActivity {
 
         // initialize tts manager
         tts = TTSManager.getInstance(this);
+
+        // start register activity
+        if(ldb.getAuthForm("token") == null) {
+            Intent intent = new Intent(this, RegisterActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override
