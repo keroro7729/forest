@@ -113,6 +113,7 @@ public class ListeningCureFragment extends Fragment {
 
     private void constructButtons(Text_4_Form form){
         int count = 0;
+        //{1, 3 ,0, 2}
         for(int i : Shuffler.get()){
             String text = form.getTexts().get(i);
             switch(count++){
