@@ -1,7 +1,9 @@
 package com.forest.forest_server.Post;
 
-import com.forest.forest_server.Attachment.Attachment;
 import com.forest.forest_server.Comment.Comment;
+import com.forest.forest_server.User.ForestUser;
+import com.forest.forest_server.form.PostDetail;
+import com.forest.forest_server.form.PostDetailRequest;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,8 +20,9 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String author;
+    @ManyToOne
+    @JoinColumn(name = "forest_user_id", nullable = false)
+    private ForestUser author;
 
     @Column(nullable = false)
     private Boolean anonymous = false;
@@ -45,6 +48,5 @@ public class Post {
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Attachment> attachments;
+    public Post(){}
 }
