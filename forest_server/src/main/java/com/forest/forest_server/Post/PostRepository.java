@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface PostRepository extends JpaRepository<Post, Long> {
     List<Post> findByAuthor(String author);
+    List<Post> findTopNByOrderByCreatedAtDesc(int limit);
+    List<Post> findTopNByOrderByLikesDesc(int limit);
 }

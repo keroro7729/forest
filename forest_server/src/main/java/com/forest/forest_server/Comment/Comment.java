@@ -1,6 +1,7 @@
 package com.forest.forest_server.Comment;
 
 import com.forest.forest_server.Post.Post;
+import com.forest.forest_server.User.ForestUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,8 +21,9 @@ public class Comment {
     @JoinColumn(name = "post_id", nullable = false)
     private Post post;
 
-    @Column(nullable = false)
-    private String author;
+    @ManyToOne
+    @JoinColumn(name = "forest_user_id", nullable = false)
+    private ForestUser author;
 
     @Column(nullable = false)
     private Boolean anonymous = false;
