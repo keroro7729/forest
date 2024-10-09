@@ -5,31 +5,59 @@
     android:orientation="vertical"
     android:padding="8dp">
 
-    <!-- 게시글 제목 -->
-    <TextView
-        android:id="@+id/textViewTitle"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"/>
+        android:layout_marginTop="4dp">
 
-    <!-- 게시글 내용 -->
-    <TextView
-        android:id="@+id/textViewContent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="@android:color/black"
-        android:layout_marginTop="4dp"/>
+        <!-- 제목과 댓글 수 -->
+        <TextView
+            android:id="@+id/post_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Post Title [Comments]"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_alignParentStart="true" />
 
-    <!-- 게시글 작성자 및 날짜 -->
+        <!-- 조회수 -->
+        <TextView
+            android:id="@+id/post_views"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Views: 123"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_alignParentEnd="true" />
+
+        <!-- 좋아요 수 -->
+        <TextView
+            android:id="@+id/post_likes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Likes: 45"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_toStartOf="@id/post_views"
+            android:layout_marginEnd="16dp" />
+    </RelativeLayout>
+
+    <!-- 작성자와 작성일 -->
     <TextView
-        android:id="@+id/textViewAuthorAndDate"
-        android:layout_width="match_parent"
+        android:id="@+id/post_author_date"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
+        android:text="Author: John Doe | Date: 2024-09-27"
+        android:textSize="12sp"
         android:textColor="@android:color/darker_gray"
-        android:layout_marginTop="4dp"/>
+        android:layout_marginTop="8dp" />
+
+    <!-- 밑줄 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/darker_gray" />
 
 </LinearLayout>

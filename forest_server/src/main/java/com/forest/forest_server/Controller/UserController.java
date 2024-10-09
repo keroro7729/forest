@@ -1,6 +1,7 @@
-package com.forest.forest_server.User;
+package com.forest.forest_server.Controller;
 
-import com.forest.forest_server.ApiController;
+import com.forest.forest_server.User.ForestUser;
+import com.forest.forest_server.User.UserService;
 import com.forest.forest_server.UserData.UserData;
 import com.forest.forest_server.UserData.UserDataService;
 import com.forest.forest_server.UserFam.UserFam;

@@ -9,16 +9,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.forest_app.R;
-import com.example.forest_app.form.Post;
+import com.example.forest_app.form.PostDetail;
 
 import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
 
-    private List<Post> postList;
+    private List<PostDetail> postList;
     private OnItemClickListener onItemClickListener;
 
-    public PostAdapter(List<Post> postList) {
+    public PostAdapter(List<PostDetail> postList) {
         this.postList = postList;
     }
 
@@ -32,7 +32,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
-        Post post = postList.get(position);
+        PostDetail post = postList.get(position);
         holder.titleTextView.setText(post.getTitle());
         holder.contentTextView.setText(post.getContent());
         holder.authorAndDateTextView.setText(post.getAuthor() + " | " + post.getCreatedAt());
@@ -65,7 +65,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     // OnItemClickListener 인터페이스
     public interface OnItemClickListener {
-        void onItemClick(Post post);
+        void onItemClick(PostDetail post);
     }
 
     // 리스너 설정 메서드

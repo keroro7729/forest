@@ -2,6 +2,7 @@ package com.forest.forest_server.Comment;
 
 import com.forest.forest_server.Post.Post;
 import com.forest.forest_server.User.ForestUser;
+import com.forest.forest_server.form.CommentDetail;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -35,4 +36,8 @@ public class Comment {
     private LocalDateTime createdAt = LocalDateTime.now();
 
     public Comment(){}
+    public Comment(CommentDetail commentDetail){
+        anonymous = commentDetail.getAnonymous();
+        content = commentDetail.getContent();
+    }
 }

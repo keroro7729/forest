@@ -1,23 +1,18 @@
-package com.forest.forest_server.Post;
+package com.forest.forest_server.Controller;
 
 import com.forest.forest_server.Comment.Comment;
 import com.forest.forest_server.Comment.CommentService;
+import com.forest.forest_server.Post.Post;
+import com.forest.forest_server.Post.PostService;
 import com.forest.forest_server.User.ForestUser;
-import com.forest.forest_server.User.UserController;
 import com.forest.forest_server.User.UserService;
-import com.forest.forest_server.form.AuthForm;
-import com.forest.forest_server.form.CommentDetail;
-import com.forest.forest_server.form.PostDetail;
-import com.forest.forest_server.form.PostDetailRequest;
-import org.apache.catalina.User;
+import com.forest.forest_server.form.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/posts")
@@ -93,23 +88,26 @@ public class PostDetailController {
         AuthForm auth = form.getAuthForm();
         if(!userController.authenticateUser(auth))
             return ResponseEntity.status(401).build();
-
-        Post post = postService.getPostById(postId);
-
-        postService.addComment()
+        postService.addComment(postId, form.getCommentDetail());
         return ResponseEntity.ok().build();
     }
 
     // 댓글 수정
     @PutMapping("/comments/{commentId}")
-    public ResponseEntity<Comment> updateComment(@PathVariable Long commentId, @RequestBody Comment updatedComment) {
-        // 댓글 수정 로직 구현 필요
+    public ResponseEntity<Comment> updateComment(@PathVariable Long commentId, @RequestBody CommentDetailRequest form) {
+        AuthForm auth = form.getAuthForm();
+        if(!userController.authenticateUser(auth))
+            return ResponseEntity.status(401).build();
+        Comment comment = new Comment(form.getCommentDetail());
+        commentService.updateComment(commentId, comment);
         return ResponseEntity.ok().build(); // 나중에 댓글 수정 서비스 추가
     }
 
     // 댓글 삭제
     @DeleteMapping("/comments/{commentId}")
-    public ResponseEntity<Void> deleteComment(@PathVariable Long commentId) {
+    public ResponseEntity<Void> deleteComment(@PathVariable Long commentId, @RequestBody AuthForm auth) {
+        if(!userController.authenticateUser(auth))
+            return ResponseEntity.status(401).build();
         commentService.deleteComment(commentId);
         return ResponseEntity.ok().build();
     }
@@ -123,16 +121,42 @@ public class PostDetailController {
 
     // 게시글 목록 (최근 n개)
     @GetMapping("/recent")
-    public ResponseEntity<List<Post>> getRecentPosts(@RequestParam int limit) {
-        List<Post> posts = postService.getRecentPosts(limit);
-        return ResponseEntity.ok(posts);
+    public ResponseEntity<List<PostDetail>> getRecentPosts(@RequestParam(required = false) Integer from,
+                                                     @RequestParam(required = false) Integer to) {
+        List<Post> posts;
+        if(from == -1 || to == -1)
+            posts = postService.getRecentPosts();
+        else posts = postService.getRecentPosts(from, to);
+        List<PostDetail> result = new ArrayList<>();
+        for(Post p : posts)
+            result.add(new PostDetail(p));
+        return ResponseEntity.ok(result);
     }
 
     // 게시글 목록 (인기 게시물)
     @GetMapping("/popular")
-    public ResponseEntity<List<Post>> getPopularPosts(@RequestParam int limit) {
-        List<Post> posts = postService.getPopularPosts(limit);
-        return ResponseEntity.ok(posts);
+    public ResponseEntity<List<PostDetail>> getPopularPosts(@RequestParam(required = false) Integer from,
+                                                      @RequestParam(required = false) Integer to) {
+        List<Post> posts;
+        if(from == -1 || to == -1)
+            posts = postService.getPopularPosts();
+        else posts = postService.getPopularPosts(from, to);
+        List<PostDetail> result = new ArrayList<>();
+        for(Post p : posts)
+            result.add(new PostDetail(p));
+        return ResponseEntity.ok(result);
     }
 
+    @GetMapping("most-view")
+    public ResponseEntity<List<PostDetail>> getMostViewPosts(@RequestParam(required = false) Integer from,
+                                                       @RequestParam(required = false) Integer to){
+        List<Post> posts;
+        if(from == -1 || to == -1)
+            posts = postService.getMostViewPosts();
+        else posts = postService.getMostViewPosts(from, to);
+        List<PostDetail> result = new ArrayList<>();
+        for(Post p : posts)
+            result.add(new PostDetail(p));
+        return ResponseEntity.ok(result);
+    }
 }

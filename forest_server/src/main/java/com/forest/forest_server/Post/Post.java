@@ -49,4 +49,9 @@ public class Post {
     private List<Comment> comments;
 
     public Post(){}
+    public Post(PostDetail postDetail){
+        anonymous = postDetail.getAnonymous();
+        title = postDetail.getTitle();
+        content = postDetail.getContent();
+    }
 }

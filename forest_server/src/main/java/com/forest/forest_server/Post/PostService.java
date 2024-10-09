@@ -1,29 +1,30 @@
 package com.forest.forest_server.Post;
 
 import com.forest.forest_server.Comment.Comment;
+import com.forest.forest_server.Comment.CommentService;
 import com.forest.forest_server.User.ForestUser;
 import com.forest.forest_server.User.UserRepository;
 import com.forest.forest_server.form.CommentDetail;
 import com.forest.forest_server.form.PostDetail;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PostService {
 
     private final PostRepository postRepository;
     private final UserRepository userRepository;
+    private final CommentService commentService;
 
     @Autowired
-    public PostService(PostRepository postRepository, UserRepository userRepository){
+    public PostService(PostRepository postRepository, UserRepository userRepository, CommentService commentService){
         this.postRepository = postRepository;
         this.userRepository = userRepository;
+        this.commentService = commentService;
     }
 
     // 게시글 생성
@@ -82,20 +83,15 @@ public class PostService {
     // 댓글 생성
     @Transactional
     public void addComment(long postId, CommentDetail data){
-        Comment comment = new Comment();
-
         Post post = postRepository.findById(postId)
                 .orElseThrow(() -> new IllegalArgumentException("Post not found"));
-        comment.setPost(post);
-
         ForestUser author = userRepository.findById(data.getAuthorId())
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
-        comment.setAuthor(author);
 
-        comment.setAnonymous(data.getAnonymous());
+        Comment comment = new Comment();
         comment.setContent(data.getContent());
-        comment.setCreatedAt(LocalDateTime.now());
-
+        comment.setAnonymous(data.getAnonymous());
+        comment = commentService.createComment(postId, data.getAuthorId(), comment);
         post.getComments().add(comment);
         postRepository.save(post);
     }
@@ -122,13 +118,30 @@ public class PostService {
 
     // 최신 게시글 n개 가져오기
     @Transactional(readOnly = true)
-    public List<Post> getRecentPosts(int limit) {
-        return postRepository.findTopNByOrderByCreatedAtDesc(limit);
+    public List<Post> getRecentPosts() {
+        return postRepository.findTop10ByOrderByCreatedAtDesc();
+    }
+    @Transactional(readOnly = true)
+    public List<Post> getRecentPosts(int from, int to){
+        List<Post> posts = postRepository.findAllByOrderByCreatedAtDesc();
+        return posts.subList(from-1, to);
     }
 
     // 인기 게시글 n개 가져오기
     @Transactional(readOnly = true)
-    public List<Post> getPopularPosts(int limit) {
-        return postRepository.findTopNByOrderByLikesDesc(limit);
+    public List<Post> getPopularPosts() {
+        return postRepository.findTop10ByOrderByLikesDesc();
+    }
+    @Transactional(readOnly = true)
+    public List<Post> getPopularPosts(int from, int to){
+        List<Post> posts = postRepository.findAllByOrderByLikesDesc();
+        return posts.subList(from-1, to);
+    }
+    @Transactional
+    public List<Post> getMostViewPosts(){ return postRepository.findTop10ByOrderByViewsDesc(); }
+    @Transactional(readOnly = true)
+    public List<Post> getMostViewPosts(int from, int to){
+        List<Post> posts = postRepository.findAllByOrderByViewsDesc();
+        return posts.subList(from-1, to);
     }
 }

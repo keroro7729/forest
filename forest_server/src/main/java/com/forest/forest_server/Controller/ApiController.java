@@ -1,17 +1,15 @@
-package com.forest.forest_server;
+package com.forest.forest_server.Controller;
 
 import com.forest.forest_server.QuizData.QuizData;
 import com.forest.forest_server.QuizData.QuizDataService;
-import com.forest.forest_server.User.ForestUser;
-import com.forest.forest_server.User.UserController;
-import com.forest.forest_server.User.UserService;
+import com.forest.forest_server.Util.ImageLoader;
+import com.forest.forest_server.Util.RandomSelecter;
 import com.forest.forest_server.form.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.http.HttpStatus;
 
 import java.util.ArrayList;
 import java.util.List;

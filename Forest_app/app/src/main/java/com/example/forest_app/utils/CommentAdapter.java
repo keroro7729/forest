@@ -9,15 +9,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.forest_app.R;
-import com.example.forest_app.form.Comment;
+import com.example.forest_app.form.CommentDetail;
 
 import java.util.List;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentViewHolder> {
 
-    private List<Comment> commentList;
+    private List<CommentDetail> commentList;
 
-    public CommentAdapter(List<Comment> commentList) {
+    public CommentAdapter(List<CommentDetail> commentList) {
         this.commentList = commentList;
     }
 
@@ -31,7 +31,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
 
     @Override
     public void onBindViewHolder(@NonNull CommentViewHolder holder, int position) {
-        Comment comment = commentList.get(position);
+        CommentDetail comment = commentList.get(position);
         holder.authorTextView.setText(comment.getAuthor());
         holder.contentTextView.setText(comment.getContent());
         holder.dateTextView.setText(comment.getCreatedAt());

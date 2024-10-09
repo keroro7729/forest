@@ -4,6 +4,8 @@ import com.forest.forest_server.Post.Post;
 import com.forest.forest_server.Post.PostRepository;
 import com.forest.forest_server.User.ForestUser;
 import com.forest.forest_server.User.UserRepository;
+import com.forest.forest_server.form.CommentDetail;
+import com.forest.forest_server.form.CommentDetailRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
