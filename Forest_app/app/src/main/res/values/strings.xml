@@ -14,5 +14,6 @@
         <item>전도 실어증</item>
         <item>명칭 실어증</item>
     </string-array>
+    <string name="title_activity_maps">MapsActivity</string>
 
 </resources>
