@@ -4,10 +4,15 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 import com.example.forest_app.R;
+import com.example.forest_app.api.ApiManager;
+import com.example.forest_app.form.Hospital;
+import com.example.forest_app.form.HospitalListResponse;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -20,16 +25,26 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private FusedLocationProviderClient fusedLocationClient;
     private LocationCallback locationCallback;
+    private ApiManager apiManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        // apiManager setting
+        apiManager = new ApiManager();
 
         // Google Map 준비
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -65,6 +80,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             return;
         }
         fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, null);
+
+        getHospitalList();
     }
 
     @Override
@@ -106,5 +123,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.addMarker(markerOptions);
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,15));
         }
+    }
+
+    private void getHospitalList(){
+        Call<HospitalListResponse> call = apiManager.getApiService().getHospitalList();
+        call.enqueue(new Callback<HospitalListResponse>() {
+            @Override
+            public void onResponse(Call<HospitalListResponse> call, Response<HospitalListResponse> response) {
+                if(response.isSuccessful()){
+                    List<Hospital> list = response.body().getItems();
+                    for(Hospital h : list){
+                        double latitude = h.getA();
+                        double longitude = h.getB();
+                        String info = h.getInfo();
+                        addMarkerOnMap(latitude, longitude, info);
+                    }
+                }
+                else{
+                    Log.e("getHospitalList", "http code: "+response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<HospitalListResponse> call, Throwable t) {
+                Log.e("getHospitalList", "network error: "+t.getLocalizedMessage());
+            }
+        });
     }
 }
