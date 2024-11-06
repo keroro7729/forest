@@ -2,11 +2,9 @@ package com.example.forest_app.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
-import androidx.activity.EdgeToEdge;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
@@ -16,19 +14,22 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.forest_app.R;
-import com.example.forest_app.form.AuthForm;
 import com.example.forest_app.utils.LocalDatabase;
 import com.example.forest_app.utils.TTSManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
     private TTSManager tts;
     private View fragmentContainer;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Intent intent = new Intent(MainActivity.this, MapsActivity.class);
+        startActivity(intent);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -68,10 +69,10 @@ public class MainActivity extends AppCompatActivity {
         tts = TTSManager.getInstance(this);
 
         // start register activity
-        if(ldb.getAuthForm("token") == null) {
-            Intent intent = new Intent(this, RegisterActivity.class);
-            startActivity(intent);
-        }
+        //if(ldb.getAuthForm("token") == null) {
+            //Intent intent = new Intent(this, RegisterActivity.class);
+            //startActivity(intent);
+        //}
     }
 
     @Override
