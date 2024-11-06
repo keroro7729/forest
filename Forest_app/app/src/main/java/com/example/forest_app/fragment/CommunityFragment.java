@@ -17,6 +17,7 @@ import com.example.forest_app.R;
 import com.example.forest_app.api.ApiManager;
 import com.example.forest_app.form.PostDetail;
 import com.example.forest_app.form.PostDetailRequest;
+import com.example.forest_app.utils.PostAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,7 @@ import retrofit2.Response;
 public class CommunityFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private PostAdapter postAdapter;
+    //private PostAdapter postAdapter;
     private ApiManager apiManager;
 
     private Button recent, views, likes;
@@ -47,10 +48,10 @@ public class CommunityFragment extends Fragment {
         recyclerView = view.findViewById(R.id.post_list_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        postAdapter = new PostAdapter(new ArrayList<>(), post -> {
+        /*postAdapter = new PostAdapter(new ArrayList<>(), post -> {
             openPostDetailFragment(post);
         });
-        recyclerView.setAdapter(postAdapter);
+        recyclerView.setAdapter(postAdapter);*/
 
         // xml 페이지 컨트롤, 글쓰기 버튼 추가 후 로직까지 작성
         sortType = "recent";
@@ -98,7 +99,7 @@ public class CommunityFragment extends Fragment {
                     @Override
                     public void onResponse(Call<List<PostDetail>> call, Response<List<PostDetail>> response) {
                         if(response.isSuccessful())
-                            postAdapter.setPostList(response.body());
+                            //postAdapter.setPostList(response.body());
                         else Log.e("getRecentPosts", "request: "+call.request()+"\n"+
                                     "http code: "+response.code());
                     }

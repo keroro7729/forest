@@ -2,6 +2,7 @@ package com.example.forest_app.api;
 
 import com.example.forest_app.form.AuthForm;
 import com.example.forest_app.form.CommentDetailRequest;
+import com.example.forest_app.form.HospitalListResponse;
 import com.example.forest_app.form.PostDetail;
 import com.example.forest_app.form.PostDetailRequest;
 import com.example.forest_app.form.RegisterForm;
@@ -27,6 +28,9 @@ import retrofit2.http.Query;
 public interface ApiService {
     @GET("api/hello")
     Call<ResponseForm> hello();
+
+    @GET("api/get-hospital-list")
+    Call<HospitalListResponse> getHospitalList();
 
     @GET("api/get-test-image")
     Call<ResponseForm> getImage();
