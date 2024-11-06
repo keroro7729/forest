@@ -11,7 +11,7 @@
         tools:layout="@layout/fragment_cure_home" />
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.forest_app.fragment.Fragment2"
+        android:name="com.example.forest_app.fragment.MapsFragment"
         android:label="재활센터정보"
         tools:layout="@layout/fragment_2" />
     <fragment
@@ -21,7 +21,7 @@
         tools:layout="@layout/fragment_3" />
     <fragment
         android:id="@+id/navigation_celendars"
-        android:name="com.example.forest_app.fragment.CommunityFragment"
+        android:name="com.example.forest_app.fragment.Fragment2"
         android:label="보호자 커뮤니티"
         tools:layout="@layout/fragment_community" />
     <fragment
