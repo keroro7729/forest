@@ -44,7 +44,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         holder.viewsTextView.setText("Views: " + post.getViews());
         holder.likesTextView.setText("Likes: " + post.getLikes());
         // 작성자 및 작성일 표시
-        holder.authorDateTextView.setText(post.getAuthor() + " | " + post.getCreatedAt());
+        //holder.authorDateTextView.setText(post.getAuthor() + " | " + post.getCreatedAt());
 
         // 클릭 이벤트 처리
         holder.itemView.setOnClickListener(v -> listener.onItemClick(post));

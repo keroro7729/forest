@@ -94,8 +94,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 "영업시간 : 09:00 ~ 18:00";
         addMarkerOnMap(latitude, longitude,locationInfo);
     }
-
-
+    
     private void addMarkerOnMap(double latitude, double longitude, String locationInfo){
         if(mMap != null) {
             LatLng location = new LatLng(latitude, longitude);
