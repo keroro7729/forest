@@ -29,11 +29,11 @@ public class CalculatingCureFragment extends Fragment {
     private int correctAnswer;
     private int correctCount;
 
-    private int CalrandomNumber1 = (int) (Math.random() * 101);  // 0 ~ 100
-    private int CalrandomNumber2 = (int) (Math.random() * 101);  // 0 ~ 100
-    private int CalrandomNumber3 = (int) (Math.random() * 101);  // 0 ~ 100
-    private int CalrandomNumber4 = (int) (Math.random() * 101);  // 0 ~ 100
-    private int CalrandomNumber5 = (int) (Math.random() * 101);  // 0 ~ 100
+    private int CalrandomNumber1 = (int) (Math.random() * 1001)*100;  // 0 ~ 100
+    private int CalrandomNumber2 = (int) (Math.random() * 101)*100;  // 0 ~ 100
+    private int CalrandomNumber3 = (int) (Math.random() * 101)*100;  // 0 ~ 100
+    private int CalrandomNumber4 = (int) (Math.random() * 101)*100;  // 0 ~ 100
+    private int CalrandomNumber5 = (int) (Math.random() * 101)*100;  // 0 ~ 100
 
     public CalculatingCureFragment() {
         // Required empty public constructor
@@ -69,16 +69,16 @@ public class CalculatingCureFragment extends Fragment {
 
     @SuppressLint("SetTextI18n")
     private void refresh() {
-        CalrandomNumber1 = (int) (Math.random() * 101);
-        CalrandomNumber2 = (int) (Math.random() * 101);
-        CalrandomNumber3 = (int) (Math.random() * 101);
-        CalrandomNumber4 = (int) (Math.random() * 101);
-        CalrandomNumber5 = (int) (Math.random() * 101);
+        CalrandomNumber1 = (int) (Math.random() * 1001)*100;
+        CalrandomNumber2 = (int) (Math.random() * 101)*100;
+        CalrandomNumber3 = (int) (Math.random() * 101)*100;
+        CalrandomNumber4 = (int) (Math.random() * 101)*100;
+        CalrandomNumber5 = (int) (Math.random() * 101)*100;
 
         correctAnswer = CalrandomNumber1 + CalrandomNumber2;
 
 
-        Calquestion.setText(CalrandomNumber1 + " + " + CalrandomNumber2 + " = ? ");
+        Calquestion.setText(CalrandomNumber1 + "원 + " + CalrandomNumber2 + "원 = ?원 ");
 
 
         ArrayList<Button> buttonList = new ArrayList<>();

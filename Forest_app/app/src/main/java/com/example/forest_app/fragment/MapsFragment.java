@@ -103,6 +103,9 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
                 ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             mMap.setMyLocationEnabled(true);
+            mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+            mMap.getUiSettings().setZoomControlsEnabled(true);
+            mMap.getUiSettings().setCompassEnabled(true);
         }
 
         fetchLocationFromServer();
@@ -118,17 +121,20 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         double latitude = 37.8665;
         double longitude = 127.7445;
 
-        String locationInfo = "전화번호 : 010-1234-1234" +
+        String locationInfo = "전화번호 : 010-1234-1234" + "  " +
                 "영업시간 : 09:00 ~ 18:00";
-        addMarkerOnMap(latitude, longitude,locationInfo);
+        String hospital_title = "한사랑 재활센터";
+
+
+        addMarkerOnMap(latitude, longitude,hospital_title, locationInfo);
     }
     
-    private void addMarkerOnMap(double latitude, double longitude, String locationInfo){
+    private void addMarkerOnMap(double latitude, double longitude, String hospital_title, String locationInfo){
         if(mMap != null) {
             LatLng location = new LatLng(latitude, longitude);
             MarkerOptions markerOptions = new MarkerOptions()
                     .position(location)
-                    .title("한사랑 재활센터")   // 마커의 제목
+                    .title(hospital_title)   // 마커의 제목
                     .snippet(locationInfo);
 
             mMap.addMarker(markerOptions);
@@ -146,8 +152,9 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
                     for(Hospital h : list){
                         double latitude = h.getA();
                         double longitude = h.getB();
-                        String info = h.getInfo();
-                        addMarkerOnMap(latitude, longitude, info);
+                        String hospital_title = h.getTitle();
+                        String locationInfo = h.getInfo();
+                        addMarkerOnMap(latitude, longitude, hospital_title,locationInfo);
                     }
                 }
                 else{

@@ -6,9 +6,9 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.forest_app.fragment.CureHomeFragment"
+        android:name="com.example.forest_app.fragment.CureListFragment"
         android:label="재활"
-        tools:layout="@layout/fragment_cure_home" />
+        tools:layout="@layout/fragment_cure_list" />
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.example.forest_app.fragment.MapsFragment"

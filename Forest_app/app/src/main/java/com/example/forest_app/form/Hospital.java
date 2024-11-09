@@ -7,5 +7,5 @@ import lombok.Setter;
 @Getter
 public class Hospital {
     private double a, b;
-    private String info;
+    private String title, info;
 }

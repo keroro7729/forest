@@ -20,7 +20,7 @@
         android:layout_width="363dp"
         android:layout_height="28dp"
         android:gravity="center"
-        android:text="TextView"
+        android:text="..."
         android:textSize="20sp" />
 
     <TextView
@@ -29,7 +29,7 @@
         android:layout_height="40dp"
         android:layout_marginTop="40dp"
         android:gravity="center"
-        android:text="TextView"
+        android:text="..."
         android:textSize="20sp" />
 
     <Button
