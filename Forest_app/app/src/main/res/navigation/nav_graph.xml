@@ -13,7 +13,7 @@
         android:id="@+id/navigation_dashboard"
         android:name="com.example.forest_app.fragment.MapsFragment"
         android:label="재활센터정보"
-        tools:layout="@layout/fragment_2" />
+        tools:layout="@layout/fragement_community" />
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.forest_app.fragment.Fragment3"
@@ -21,7 +21,7 @@
         tools:layout="@layout/fragment_3" />
     <fragment
         android:id="@+id/navigation_celendars"
-        android:name="com.example.forest_app.fragment.Fragment2"
+        android:name="com.example.forest_app.fragment.CommunityFragment"
         android:label="보호자 커뮤니티"
         tools:layout="@layout/fragment_community" />
     <fragment
@@ -65,5 +65,19 @@
         android:name="com.example.forest_app.fragment.SpeekCureFragment"
         android:label="발음하기"
         tools:layout="@layout/fragment_speek_cure"/>
+
+    <fragment
+        android:id="@+id/alarm_tool"
+        android:name="com.example.forest_app.fragment.AlarmFragment"
+        android:label="약 알람"
+        tools:layout="@layout/fragment_alarm"/>
+
+    <fragment
+        android:id="@+id/expression_tool"
+        android:name="com.example.forest_app.fragment.ExpressionFragment"
+        android:label="의사소통 도구"
+        tools:layout="@layout/fragment_expression"/>
+
+
 
 </navigation>

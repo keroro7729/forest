@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.ExpressionFragment">
+
+
+    <LinearLayout
+        android:id="@+id/expression_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/ex_yes_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="O 네" />
+            <Button
+                android:id="@+id/ex_no_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="X 아니요" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/ex_hello_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="안녕하세요" />
+            <Button
+                android:id="@+id/ex_give_me_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="주세요" />
+            <Button
+                android:id="@+id/ex_good_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="좋아요" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/ex_bathroom_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="화장실 가고 싶어요" />
+            <Button
+                android:id="@+id/ex_thirsty_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="목이 말라요" />
+            <Button
+                android:id="@+id/ex_gowithme_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="같이 가자" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/ex_sick_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="아파요" />
+            <Button
+                android:id="@+id/ex_eat_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="먹어요" />
+            <Button
+                android:id="@+id/ex_stop_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="그만 할래요" />
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/expression_text_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="추가할 표현을 입력하세요"
+            android:inputType="text"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/add_expression_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="추가하기" />
+    </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>

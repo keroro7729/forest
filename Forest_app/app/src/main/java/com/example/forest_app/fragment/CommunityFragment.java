@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -19,7 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.forest_app.R;
-import com.example.forest_app.activity.RegisterActivity;
 import com.example.forest_app.activity.WritePostActivity;
 import com.example.forest_app.api.ApiManager;
 import com.example.forest_app.form.PostDetail;
@@ -31,13 +29,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class Fragment2 extends Fragment {
+public class CommunityFragment extends Fragment {
     // community fragment
     private static final String TAG = "Community fragment";
     private ApiManager apiManager;
     private LinearLayout layout;
 
-    public Fragment2() {
+    public CommunityFragment() {
         // Required empty public constructor
     }
     @Override
@@ -50,7 +48,7 @@ public class Fragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_2, container, false);
+        return inflater.inflate(R.layout.fragement_community, container, false);
     }
 
     @Override
