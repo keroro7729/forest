@@ -23,7 +23,7 @@ public class Comment {
     private Post post;
 
     @ManyToOne
-    @JoinColumn(name = "forest_user_id", nullable = false)
+    @JoinColumn(name = "author", nullable = false)
     private ForestUser author;
 
     @Column(nullable = false)

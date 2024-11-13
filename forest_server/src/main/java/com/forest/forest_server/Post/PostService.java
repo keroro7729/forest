@@ -124,7 +124,9 @@ public class PostService {
     @Transactional(readOnly = true)
     public List<Post> getRecentPosts(int from, int to){
         List<Post> posts = postRepository.findAllByOrderByCreatedAtDesc();
-        return posts.subList(from-1, to);
+        from = from == 0 ? 0 : from-1;
+        to = posts.size() > to ? to : posts.size()-1;
+        return posts.subList(from, to);
     }
 
     // 인기 게시글 n개 가져오기
@@ -135,13 +137,17 @@ public class PostService {
     @Transactional(readOnly = true)
     public List<Post> getPopularPosts(int from, int to){
         List<Post> posts = postRepository.findAllByOrderByLikesDesc();
-        return posts.subList(from-1, to);
+        from = from == 0 ? 0 : from-1;
+        to = posts.size() > to ? to : posts.size()-1;
+        return posts.subList(from, to);
     }
     @Transactional
     public List<Post> getMostViewPosts(){ return postRepository.findTop10ByOrderByViewsDesc(); }
     @Transactional(readOnly = true)
     public List<Post> getMostViewPosts(int from, int to){
         List<Post> posts = postRepository.findAllByOrderByViewsDesc();
-        return posts.subList(from-1, to);
+        from = from == 0 ? 0 : from-1;
+        to = posts.size() > to ? to : posts.size()-1;
+        return posts.subList(from, to);
     }
 }

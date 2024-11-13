@@ -2,22 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home"
+        android:icon="@drawable/baseline_local_hospital_24"
         android:title="재활" />
     <item
         android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard"
+        android:icon="@drawable/baseline_map_24"
         android:title="재활 센터 정보" />
     <item
         android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notification"
+        android:icon="@drawable/baseline_home_24"
         android:title="홈" />
     <item
         android:id="@+id/navigation_celendars"
-        android:icon="@drawable/ic_calendar"
-        android:title="보호자 커뮤니티" />
+        android:icon="@drawable/baseline_people_alt_24"
+        android:title="커뮤니티" />
     <item
         android:id="@+id/navigation_wcs"
-        android:icon="@drawable/ic_wc"
+        android:icon="@drawable/baseline_access_alarm_24"
         android:title="편의 기능" />
 </menu>

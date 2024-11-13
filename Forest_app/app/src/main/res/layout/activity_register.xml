@@ -95,7 +95,9 @@
             android:id="@+id/register_skip_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/design_default_color_error"
+            android:backgroundTint="#808080"
+            android:textColor="@color/black"
+
             android:text="건너뛰기 (임시 테스트용)" />
 
         <!-- 제출 버튼 -->
@@ -103,7 +105,9 @@
             android:id="@+id/register_summit_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="다음" />
+            android:text="다음"
+            android:backgroundTint="#808080"
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

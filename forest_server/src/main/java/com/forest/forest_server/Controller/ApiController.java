@@ -162,11 +162,11 @@ public class ApiController {
     @GetMapping("/get-hospital-list")
     public ResponseEntity<HospitalList> getHospitalList(){
         HospitalList response = new HospitalList();
-        response.setItmes(new ArrayList<>());
-        response.getItmes().add(new Hospital(73, 64, "명동병원", "정보는 information"));
-        response.getItmes().add(new Hospital(75, 62, "강대병원", "정보는 information"));
-        response.getItmes().add(new Hospital(78, 61, "실어증병원", "정보는 information"));
-        response.getItmes().add(new Hospital(70, 58, "재활병원", "정보는 information"));
+        response.setItems(new ArrayList<>());
+        response.getItems().add(new Hospital(73, 64, "명동병원", "정보는 information"));
+        response.getItems().add(new Hospital(75, 62, "강대병원", "정보는 information"));
+        response.getItems().add(new Hospital(78, 61, "실어증병원", "정보는 information"));
+        response.getItems().add(new Hospital(70, 58, "재활병원", "정보는 information"));
         //System.out.println(response.getItems());//
         return ResponseEntity.ok().body(response);
     }

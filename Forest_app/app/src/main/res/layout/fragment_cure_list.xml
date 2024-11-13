@@ -8,29 +8,39 @@
         android:id="@+id/word_img_cure_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="단어 이미지 연관짓기" />
+        android:text="단어 이미지 연관짓기"
+        android:textColor="@color/black"
+        android:backgroundTint="#808080"/>
 
     <Button
         android:id="@+id/calculating_cure_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="계산하기" />
+        android:text="계산하기"
+        android:textColor="@color/black"
+        android:backgroundTint="#808080"/>
 
     <Button
         android:id="@+id/listening_cure_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="청각훈련" />
+        android:text="청각훈련"
+        android:textColor="@color/black"
+        android:backgroundTint="#808080"/>
 
     <Button
         android:id="@+id/recog_cure_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="인지재활" />
+        android:text="인지재활"
+        android:textColor="@color/black"
+        android:backgroundTint="#808080"/>
 
     <Button
         android:id="@+id/speek_cure_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="발음하기" />
+        android:text="발음하기"
+        android:textColor="@color/black"
+        android:backgroundTint="#808080"/>
 </LinearLayout>
