@@ -9,8 +9,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="당신이 잘 하는 일이라면 무엇이나 행복에 도움이 된다. -카뮈-" />
+        android:layout_height="match_parent"/>
 
     <ImageView
         android:id="@+id/imageView1"

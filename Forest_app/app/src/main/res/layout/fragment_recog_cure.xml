@@ -19,7 +19,7 @@
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:layout_gravity="center"
-            android:src="@drawable/scinec" />
+            android:src="@drawable/baseline_insert_photo_24" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -31,12 +31,16 @@
                 android:id="@+id/recog_button1"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#808080"
+                android:textColor="@color/black"
                 android:text="Button" />
 
             <Button
                 android:id="@+id/recog_button2"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#808080"
+                android:textColor="@color/black"
                 android:text="Button" />
         </LinearLayout>
 
@@ -50,11 +54,15 @@
                 android:id="@+id/recog_button3"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#808080"
+                android:textColor="@color/black"
                 android:text="Button" />
 
             <Button
                 android:id="@+id/recog_button4"
                 android:layout_width="150dp"
+                android:backgroundTint="#808080"
+                android:textColor="@color/black"
                 android:layout_height="wrap_content"
                 android:text="Button" />
         </LinearLayout>

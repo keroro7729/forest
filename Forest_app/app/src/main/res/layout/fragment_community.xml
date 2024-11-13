@@ -19,7 +19,7 @@
             android:layout_weight="1"
             android:text="Recent"
             android:backgroundTint="@android:color/darker_gray"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:textStyle="bold" />
 
         <!-- 조회수 순 버튼 -->
