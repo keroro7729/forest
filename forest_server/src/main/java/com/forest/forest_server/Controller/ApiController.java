@@ -162,12 +162,10 @@ public class ApiController {
     @GetMapping("/get-hospital-list")
     public ResponseEntity<HospitalList> getHospitalList(){
         HospitalList response = new HospitalList();
-        response.setItems(new ArrayList<>());
-        response.getItems().add(new Hospital(73, 64, "명동병원", "정보는 information"));
-        response.getItems().add(new Hospital(75, 62, "강대병원", "정보는 information"));
-        response.getItems().add(new Hospital(78, 61, "실어증병원", "정보는 information"));
-        response.getItems().add(new Hospital(70, 58, "재활병원", "정보는 information"));
-        //System.out.println(response.getItems());//
+        List<Hospital> items = response.getItems();
+        items.add(new Hospital(37.893354394734565d, 127.75560364908274, "두루바른언어심리임상센터", "평일 9:00-18:00   033-244-0075"));
+        items.add(new Hospital(37.857870757995066d, 127.72047561487184d, "김두라언어임상연구소", "전화예약 033-243-3555"));
+        items.add(new Hospital(37.911330650731216d, 127.73884410019444d, "푸른솔언어심리발달센터", "평일 10:00~20:00 주말 10:00~14:00 일요일 정기휴무\n010-8402-6301"));
         return ResponseEntity.ok().body(response);
     }
 }

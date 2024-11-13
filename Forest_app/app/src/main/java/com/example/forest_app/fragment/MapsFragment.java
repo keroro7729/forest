@@ -108,7 +108,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
             mMap.getUiSettings().setCompassEnabled(true);
         }
 
-        fetchLocationFromServer();
+        //fetchLocationFromServer();
     }
 
     @Override
@@ -152,7 +152,6 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
                     Log.i("response", response.body().toString());
                     List<Hospital> list = response.body().getItems();
                     if(list == null){
-                        Log.e("fuck", "왜 널이야 씹련아");
                         return;
                     }
                     for(Hospital h : list){
