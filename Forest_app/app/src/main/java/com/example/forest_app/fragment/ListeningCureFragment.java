@@ -1,5 +1,6 @@
 package com.example.forest_app.fragment;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -32,7 +33,7 @@ import retrofit2.Response;
 
 public class ListeningCureFragment extends Fragment {
 
-    private final ApiManager apiManager = new ApiManager();
+    private ApiManager apiManager;
     private LocalDatabase ldb;
     private final TTSManager tts = TTSManager.getInstance(getContext());
     private Button lcbutton1, lcbutton2, lcbutton3, lcbutton4;
@@ -40,9 +41,14 @@ public class ListeningCureFragment extends Fragment {
     private String answer;
 
     public ListeningCureFragment() {
-        // Required empty public constructor
+
     }
 
+    @Override
+    public void onAttach(Context context){
+        super.onAttach(context);
+        apiManager = new ApiManager(getResources().getString(R.string.SERVER_URL));
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

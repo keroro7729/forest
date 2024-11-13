@@ -1,5 +1,6 @@
 package com.example.forest_app.fragment;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -31,14 +32,18 @@ import retrofit2.Response;
 
 public class SpeekCureFragment extends Fragment {
 
-    private ApiManager apiManager = new ApiManager();
+    private ApiManager apiManager;
     private TTSManager tts = TTSManager.getInstance(getContext());
     private LocalDatabase ldb = LocalDatabase.getInstance(getContext());
     private String answer, imgData;
     private LinearLayout layout;
     private Button nextButton;
     public SpeekCureFragment() {
-        // Required empty public constructor
+    }
+    @Override
+    public void onAttach(Context context){
+        super.onAttach(context);
+        apiManager = new ApiManager(getResources().getString(R.string.SERVER_URL));
     }
 
     @Override

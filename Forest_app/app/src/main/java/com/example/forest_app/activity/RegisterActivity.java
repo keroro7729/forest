@@ -34,7 +34,7 @@ import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private ApiManager apiManager = new ApiManager();
+    private ApiManager apiManager;
     private LocalDatabase ldb;
     private RegisterForm form = new RegisterForm();
     private Button summitButton;
@@ -61,6 +61,7 @@ public class RegisterActivity extends AppCompatActivity {
         phoneNumText = findViewById(R.id.register_phone_num_text);
         emailText = findViewById(R.id.register_email_text);
         layout = findViewById(R.id.register_layout);
+        apiManager = new ApiManager(getResources().getString(R.string.SERVER_URL));
 
         // should deleted
         Button skipButton = findViewById(R.id.register_skip_button);

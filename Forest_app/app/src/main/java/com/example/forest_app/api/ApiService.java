@@ -2,7 +2,7 @@ package com.example.forest_app.api;
 
 import com.example.forest_app.form.AuthForm;
 import com.example.forest_app.form.CommentDetailRequest;
-import com.example.forest_app.form.HospitalListResponse;
+import com.example.forest_app.form.HospitalList;
 import com.example.forest_app.form.PostDetail;
 import com.example.forest_app.form.PostDetailRequest;
 import com.example.forest_app.form.RegisterForm;
@@ -30,7 +30,7 @@ public interface ApiService {
     Call<ResponseForm> hello();
 
     @GET("api/get-hospital-list")
-    Call<HospitalListResponse> getHospitalList();
+    Call<HospitalList> getHospitalList();
 
     @GET("api/get-test-image")
     Call<ResponseForm> getImage();

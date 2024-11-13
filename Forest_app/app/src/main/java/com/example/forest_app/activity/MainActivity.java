@@ -69,10 +69,10 @@ public class MainActivity extends AppCompatActivity {
         tts = TTSManager.getInstance(this);
 
         // start register activity
-        //if(ldb.getAuthForm("token") == null) {
-            //Intent intent = new Intent(this, RegisterActivity.class);
-            //startActivity(intent);
-        //}
+        if(ldb.getAuthForm("token") == null) {
+            Intent intent = new Intent(this, RegisterActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override

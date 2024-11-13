@@ -17,7 +17,7 @@ import androidx.fragment.app.Fragment;
 import com.example.forest_app.R;
 import com.example.forest_app.api.ApiManager;
 import com.example.forest_app.form.Hospital;
-import com.example.forest_app.form.HospitalListResponse;
+import com.example.forest_app.form.HospitalList;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -90,7 +90,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, null);
 
         // apiManager 초기화 및 병원 정보 가져오기
-        apiManager = new ApiManager();
+        apiManager = new ApiManager(getResources().getString(R.string.SERVER_URL));
         getHospitalList();
     }
 
@@ -143,12 +143,18 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
     }
 
     private void getHospitalList(){
-        Call<HospitalListResponse> call = apiManager.getApiService().getHospitalList();
-        call.enqueue(new Callback<HospitalListResponse>() {
+        Call<HospitalList> call = apiManager.getApiService().getHospitalList();
+        call.enqueue(new Callback<HospitalList>() {
             @Override
-            public void onResponse(Call<HospitalListResponse> call, Response<HospitalListResponse> response) {
+            public void onResponse(Call<HospitalList> call, Response<HospitalList> response) {
                 if(response.isSuccessful()){
+                    Log.i("response", response.toString());
+                    Log.i("response", response.body().toString());
                     List<Hospital> list = response.body().getItems();
+                    if(list == null){
+                        Log.e("fuck", "왜 널이야 씹련아");
+                        return;
+                    }
                     for(Hospital h : list){
                         double latitude = h.getA();
                         double longitude = h.getB();
@@ -163,7 +169,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
             }
 
             @Override
-            public void onFailure(Call<HospitalListResponse> call, Throwable t) {
+            public void onFailure(Call<HospitalList> call, Throwable t) {
                 Log.e("getHospitalList", "network error: "+t.getLocalizedMessage());
             }
         });

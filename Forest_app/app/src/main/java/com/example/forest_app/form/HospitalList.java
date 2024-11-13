@@ -4,9 +4,11 @@ import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
-public class HospitalListResponse {
+@ToString
+public class HospitalList {
     private List<Hospital> items;
 }

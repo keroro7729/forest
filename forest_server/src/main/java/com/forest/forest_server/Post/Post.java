@@ -21,7 +21,7 @@ public class Post {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "forest_user_id", nullable = false)
+    @JoinColumn(name = "author", nullable = false)
     private ForestUser author;
 
     @Column(nullable = false)

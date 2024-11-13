@@ -1,5 +1,6 @@
 package com.example.forest_app.fragment;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -31,7 +32,7 @@ import retrofit2.Response;
 
 public class RecogCureFragment extends Fragment {
 
-    private ApiManager apiManager = new ApiManager();
+    private ApiManager apiManager;
     private LocalDatabase ldb = LocalDatabase.getInstance(getContext());
     private TTSManager tts = TTSManager.getInstance(getContext());
     private String answer;
@@ -40,7 +41,11 @@ public class RecogCureFragment extends Fragment {
     private List<Button> buttons;
 
     public RecogCureFragment() {
-        // Required empty public constructor
+    }
+    @Override
+    public void onAttach(Context context){
+        super.onAttach(context);
+        apiManager = new ApiManager(getResources().getString(R.string.SERVER_URL));
     }
 
     @Override

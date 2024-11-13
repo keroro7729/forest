@@ -1,5 +1,6 @@
 package com.example.forest_app.fragment;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -36,12 +37,16 @@ import retrofit2.Response;
 
 public class WordImgCureFragment extends Fragment {
 
-    private final ApiManager apiManager = new ApiManager();
+    private ApiManager apiManager;
     private LocalDatabase ldb;
     private LinearLayout layoutRow1, layoutRow2, layoutRow3;
 
     public WordImgCureFragment() {
-        // Required empty public constructor
+    }
+    @Override
+    public void onAttach(Context context){
+        super.onAttach(context);
+        apiManager = new ApiManager(getResources().getString(R.string.SERVER_URL));
     }
 
     @Override

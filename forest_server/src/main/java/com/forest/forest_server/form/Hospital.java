@@ -1,12 +1,12 @@
-package com.example.forest_app.form;
+package com.forest.forest_server.form;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Setter
 @Getter
-@ToString
+@AllArgsConstructor
 public class Hospital {
     private double a, b;
     private String title, info;
