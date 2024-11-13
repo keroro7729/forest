@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.Gravity;
@@ -82,11 +83,10 @@ public class ExpressionFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String expression = expressionText.getText().toString();
-                customExpressions += " "+expression;
-                ldb.putString("expressions", customExpressions);
+                createNewExpression(expression);
             }
         });
-        StringTokenizer st = new StringTokenizer(customExpressions);
+        /*StringTokenizer st = new StringTokenizer(customExpressions);
         while(st.hasMoreElements()){
             String expression = st.nextToken();
             // 버튼을 생성하는 코드
@@ -98,6 +98,51 @@ public class ExpressionFragment extends Fragment {
             );
             newBtn.setLayoutParams(params);
             layout.addView(newBtn);
-        }
+        }*/
+    }
+
+    private void createNewExpression(String expression){
+        LinearLayout linearLayout = new LinearLayout(getContext());
+        linearLayout.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        ));
+        linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+
+        TextView textView = new TextView(getContext());
+        textView.setLayoutParams(new LinearLayout.LayoutParams(
+                0,
+                100,
+                1.0f // 가중치
+        ));
+        textView.setText(expression);
+        textView.setTextSize(18);
+        textView.setGravity(Gravity.CENTER);
+        textView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.light_gray));
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String text = textView.getText().toString();
+                tts.speak(text);
+            }
+        });
+
+        Button button = new Button(getContext());
+        button.setLayoutParams(new LinearLayout.LayoutParams(
+                100,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        ));
+        button.setText("X");
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                layout.removeView(linearLayout);
+            }
+        });
+
+        linearLayout.addView(textView);
+        linearLayout.addView(button);
+
+        layout.addView(linearLayout);
     }
 }

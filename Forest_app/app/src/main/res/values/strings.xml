@@ -3,7 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="SERVER_URL">http://10.0.2.2:8081/</string>
+    <string name="SERVER_URL">http://192.168.50.59:8081/</string>
     <string-array name="disease_types">
         <item>실어증 유형 선택</item>
         <item>전반 실어증</item>
