@@ -10,10 +10,9 @@
         android:id="@+id/speek_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_gravity="top|center"
-        android:layout_marginTop="100dp">
-
+        android:layout_marginTop="100dp"
+        android:orientation="vertical">
 
 
     </LinearLayout>
@@ -23,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Button"
+        android:text="다음 사진"
         android:backgroundTint="#808080"
         android:textColor="@color/black"
         android:layout_gravity="bottom|center"
