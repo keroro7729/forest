@@ -43,6 +43,7 @@
         android:layout_width="190dp"
         android:layout_height="150dp"
         android:backgroundTint="#808080"
+
         android:text="Button"
         android:textColor="@color/black"
         android:textSize="20sp"

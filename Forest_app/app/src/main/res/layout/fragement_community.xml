@@ -31,7 +31,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:textColor="@android:color/black"
-            android:backgroundTint="@android:color/darker_gray" />/>
+            android:backgroundTint="#808080" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
