@@ -85,7 +85,7 @@ public class RecogCureFragment extends Fragment {
     private void refresh(){
         answer = null;
         for(Button b : buttons)
-            b.setBackgroundColor(Color.rgb(226,226,226));
+            b.setBackgroundColor(Color.WHITE);
         findStatementByImg();
     }
 

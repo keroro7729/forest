@@ -2,45 +2,57 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="#e3ffc0"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
 
     <Button
         android:id="@+id/word_img_cure_button"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="단어 이미지 연관짓기"
+        android:layout_margin="10dp"
         android:textColor="@color/black"
-        android:backgroundTint="#808080"/>
+        android:backgroundTint="#FFFFFF"
+        android:padding="15dp"/>
 
     <Button
         android:id="@+id/calculating_cure_button"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="계산하기"
+        android:layout_margin="10dp"
         android:textColor="@color/black"
-        android:backgroundTint="#808080"/>
+        android:backgroundTint="#FFFFFF"
+        android:padding="15dp"/>
 
     <Button
         android:id="@+id/listening_cure_button"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="청각훈련"
+        android:layout_margin="10dp"
         android:textColor="@color/black"
-        android:backgroundTint="#808080"/>
+        android:backgroundTint="#FFFFFF"
+        android:padding="15dp"/>
 
     <Button
         android:id="@+id/recog_cure_button"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="인지재활"
+        android:layout_margin="10dp"
         android:textColor="@color/black"
-        android:backgroundTint="#808080"/>
+        android:backgroundTint="#FFFFFF"
+        android:padding="15dp"/>
 
     <Button
         android:id="@+id/speek_cure_button"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="발음하기"
+        android:layout_margin="10dp"
         android:textColor="@color/black"
-        android:backgroundTint="#808080"/>
+        android:backgroundTint="#FFFFFF"
+        android:padding="15dp"/>
 </LinearLayout>

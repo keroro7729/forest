@@ -124,7 +124,7 @@ public class SpeekCureFragment extends Fragment {
             textView.setTypeface(Typeface.DEFAULT_BOLD);
             textView.setTextColor(Color.BLACK);
             textView.setGravity(Gravity.CENTER);
-            textView.setBackgroundColor(Color.rgb(226, 226, 226));
+            textView.setBackgroundColor(Color.WHITE);
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

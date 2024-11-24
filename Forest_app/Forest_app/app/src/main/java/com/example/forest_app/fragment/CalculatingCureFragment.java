@@ -98,10 +98,10 @@ public class CalculatingCureFragment extends Fragment {
         buttonList.get(2).setOnClickListener(v -> checkAnswer(buttonList.get(2), CalrandomNumber1 + CalrandomNumber4));
         buttonList.get(3).setOnClickListener(v -> checkAnswer(buttonList.get(3), CalrandomNumber1 + CalrandomNumber5));
 
-        Calexample.setBackgroundColor(Color.rgb(226, 226, 226));
-        Calexample1.setBackgroundColor(Color.rgb(226, 226, 226));
-        Calexample2.setBackgroundColor(Color.rgb(226, 226, 226));
-        Calexample3.setBackgroundColor(Color.rgb(226, 226, 226));
+        Calexample.setBackgroundColor(Color.WHITE);
+        Calexample1.setBackgroundColor(Color.WHITE);
+        Calexample2.setBackgroundColor(Color.WHITE);
+        Calexample3.setBackgroundColor(Color.WHITE);
 
     }
     @SuppressLint("SetTextI18n")

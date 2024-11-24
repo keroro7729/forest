@@ -84,10 +84,10 @@ public class ListeningCureFragment extends Fragment {
 
     private void refresh(){
         answer = null;
-        lcbutton1.setBackgroundColor(Color.rgb(226, 226, 226));
-        lcbutton2.setBackgroundColor(Color.rgb(226, 226, 226));
-        lcbutton3.setBackgroundColor(Color.rgb(226, 226, 226));
-        lcbutton4.setBackgroundColor(Color.rgb(226, 226, 226));
+        lcbutton1.setBackgroundColor(Color.WHITE);
+        lcbutton2.setBackgroundColor(Color.WHITE);
+        lcbutton3.setBackgroundColor(Color.WHITE);
+        lcbutton4.setBackgroundColor(Color.WHITE);
         findWordByListening();
     }
 
