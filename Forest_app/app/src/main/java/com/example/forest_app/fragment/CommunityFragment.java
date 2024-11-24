@@ -55,7 +55,7 @@ public class CommunityFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
 
-        layout = view.findViewById(R.id.postlist_layout);
+        /*layout = view.findViewById(R.id.postlist_layout);
         Button writeBtn = view.findViewById(R.id.make_post_btn);
         writeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +89,7 @@ public class CommunityFragment extends Fragment {
             public void onFailure(Call<List<PostDetail>> call, Throwable t) {
                 Log.e(TAG, "network error: "+t.getMessage());
             }
-        });
+        });*/
     }
 
     private void addPost(PostDetail postData){

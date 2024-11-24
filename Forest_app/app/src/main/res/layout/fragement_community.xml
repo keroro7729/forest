@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#e3ffc0"
     tools:context=".fragment.CommunityFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,7 +18,44 @@
             android:orientation="vertical"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text=" 테스트 글3"
+                tools:layout_editor_absoluteX="126dp"
+                tools:layout_editor_absoluteY="154dp"
+                android:background="#FFFFFF"
+                android:layout_margin="10dp"
+                android:textSize="30dp"
+                android:padding="3dp"/>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text=" 테스트 글2"
+                tools:layout_editor_absoluteX="126dp"
+                tools:layout_editor_absoluteY="154dp"
+                android:background="#FFFFFF"
+                android:layout_margin="10dp"
+                android:textSize="30dp"
+                android:padding="3dp"/>
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text=" 테스트 글1"
+                tools:layout_editor_absoluteX="126dp"
+                tools:layout_editor_absoluteY="154dp"
+                android:background="#FFFFFF"
+                android:layout_margin="10dp"
+                android:textSize="30dp"
+                android:padding="3dp"/>
 
 
         </LinearLayout>
@@ -31,7 +69,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:textColor="@android:color/black"
-            android:backgroundTint="#808080" />
+            android:backgroundTint="#CCCCCC" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
